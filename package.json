@@ -1,0 +1,30 @@
+{
+  "name": "store-rag-assistant",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "description": "Grounded shop assistant (RAG + tools) for WooCommerce-style catalogs, with evals, safeguards and cost per query.",
+  "engines": {
+    "node": ">=22"
+  },
+  "scripts": {
+    "test": "vitest run",
+    "typecheck": "tsc --noEmit",
+    "ask": "tsx src/cli.ts",
+    "dev": "tsx watch src/server.ts",
+    "start": "tsx src/server.ts",
+    "eval": "tsx evals/run.ts"
+  },
+  "dependencies": {
+    "@anthropic-ai/sdk": "^1.8.0",
+    "@hono/node-server": "^2.1.8",
+    "@huggingface/transformers": "^4.3.2",
+    "hono": "^4.13.18"
+  },
+  "devDependencies": {
+    "@types/node": "^26.6.6",
+    "tsx": "^4.23.15",
+    "typescript": "^7.0.2",
+    "vitest": "^5.1.0"
+  }
+}
