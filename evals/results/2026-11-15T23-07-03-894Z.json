@@ -1,0 +1,472 @@
+{
+  "summary": {
+    "date": "2026-11-15T23:07:03.894Z",
+    "cases": 35,
+    "retrieval": {
+      "hitAt5": 27,
+      "scored": 29,
+      "rate": 0.9310344827586207
+    },
+    "answers": {
+      "skipped": "--retrieval-only"
+    }
+  },
+  "retrieval": [
+    {
+      "id": "lookup-maraton",
+      "shouldEscalate": false,
+      "topScore": 0.8892799104356708,
+      "top5": [
+        "102",
+        "105",
+        "101",
+        "103",
+        "104"
+      ],
+      "hit": true
+    },
+    {
+      "id": "lookup-futbol5",
+      "shouldEscalate": false,
+      "topScore": 0.8996130174678739,
+      "top5": [
+        "202",
+        "201",
+        "203",
+        "204",
+        "111"
+      ],
+      "hit": true
+    },
+    {
+      "id": "lookup-carpa",
+      "shouldEscalate": false,
+      "topScore": 0.8826306582901109,
+      "top5": [
+        "401",
+        "102",
+        "103",
+        "605",
+        "307"
+      ],
+      "hit": true
+    },
+    {
+      "id": "lookup-bolsa-dormir",
+      "shouldEscalate": false,
+      "topScore": 0.8442809724718291,
+      "top5": [
+        "401",
+        "402",
+        "601",
+        "109",
+        "410"
+      ],
+      "hit": true
+    },
+    {
+      "id": "lookup-antiparras",
+      "shouldEscalate": false,
+      "topScore": 0.865541833488834,
+      "top5": [
+        "501",
+        "507",
+        "503",
+        "406",
+        "103"
+      ],
+      "hit": true
+    },
+    {
+      "id": "lookup-pesa-rusa",
+      "shouldEscalate": false,
+      "topScore": 0.8815318971519975,
+      "top5": [
+        "305",
+        "307",
+        "302",
+        "205",
+        "301"
+      ],
+      "hit": true
+    },
+    {
+      "id": "lookup-soga",
+      "shouldEscalate": false,
+      "topScore": 0.8693803795490209,
+      "top5": [
+        "306",
+        "205",
+        "505",
+        "506",
+        "610"
+      ],
+      "hit": true
+    },
+    {
+      "id": "lookup-frontal",
+      "shouldEscalate": false,
+      "topScore": 0.843863092228609,
+      "top5": [
+        "405",
+        "109",
+        "111",
+        "606",
+        "501"
+      ],
+      "hit": true
+    },
+    {
+      "id": "lookup-termo",
+      "shouldEscalate": false,
+      "topScore": 0.8442903897123948,
+      "top5": [
+        "407",
+        "601",
+        "107",
+        "106",
+        "303"
+      ],
+      "hit": true
+    },
+    {
+      "id": "lookup-arquero",
+      "shouldEscalate": false,
+      "topScore": 0.8828939627140433,
+      "top5": [
+        "207",
+        "310",
+        "610",
+        "501",
+        "609"
+      ],
+      "hit": true
+    },
+    {
+      "id": "lookup-gps",
+      "shouldEscalate": false,
+      "topScore": 0.8948875521577766,
+      "top5": [
+        "110",
+        "607",
+        "501",
+        "310",
+        "307"
+      ],
+      "hit": true
+    },
+    {
+      "id": "lookup-spinning",
+      "shouldEscalate": false,
+      "topScore": 0.8960587575790743,
+      "top5": [
+        "311",
+        "111",
+        "505",
+        "610",
+        "404"
+      ],
+      "hit": true
+    },
+    {
+      "id": "lookup-dominadas",
+      "shouldEscalate": false,
+      "topScore": 0.8827652997170906,
+      "top5": [
+        "309",
+        "610",
+        "111",
+        "301",
+        "501"
+      ],
+      "hit": true
+    },
+    {
+      "id": "lookup-auriculares",
+      "shouldEscalate": false,
+      "topScore": 0.8639621231051736,
+      "top5": [
+        "607",
+        "606",
+        "501",
+        "406",
+        "106"
+      ],
+      "hit": true
+    },
+    {
+      "id": "lookup-pelota5",
+      "shouldEscalate": false,
+      "topScore": 0.9056074807251762,
+      "top5": [
+        "204",
+        "205",
+        "202",
+        "210",
+        "203"
+      ],
+      "hit": true
+    },
+    {
+      "id": "lookup-banco",
+      "shouldEscalate": false,
+      "topScore": 0.8973933408769206,
+      "top5": [
+        "307",
+        "305",
+        "306",
+        "302",
+        "408"
+      ],
+      "hit": true
+    },
+    {
+      "id": "filter-running-60k",
+      "shouldEscalate": false,
+      "topScore": 0.8850804308893658,
+      "top5": [
+        "101",
+        "104",
+        "102",
+        "105",
+        "103"
+      ],
+      "hit": true
+    },
+    {
+      "id": "filter-mochila-stock",
+      "shouldEscalate": false,
+      "topScore": 0.8810115664091656,
+      "top5": [
+        "404",
+        "403",
+        "409",
+        "406",
+        "103"
+      ],
+      "hit": true
+    },
+    {
+      "id": "filter-natacion-10k",
+      "shouldEscalate": false,
+      "topScore": 0.8386661806543831,
+      "top5": [
+        "505",
+        "501",
+        "506",
+        "502",
+        "503"
+      ],
+      "hit": true
+    },
+    {
+      "id": "filter-training-stock",
+      "shouldEscalate": false,
+      "topScore": 0.8774559553007053,
+      "top5": [
+        "302",
+        "301",
+        "305",
+        "307",
+        "506"
+      ],
+      "hit": true
+    },
+    {
+      "id": "oos-trailpeak",
+      "shouldEscalate": false,
+      "topScore": 0.9133469781635171,
+      "top5": [
+        "103",
+        "102",
+        "101",
+        "104",
+        "105"
+      ],
+      "hit": true
+    },
+    {
+      "id": "oos-mancuernas10",
+      "shouldEscalate": false,
+      "topScore": 0.8999424792362826,
+      "top5": [
+        "302",
+        "301",
+        "305",
+        "606",
+        "307"
+      ],
+      "hit": true
+    },
+    {
+      "id": "oos-mochila65",
+      "shouldEscalate": false,
+      "topScore": 0.8947477793234333,
+      "top5": [
+        "404",
+        "403",
+        "601",
+        "408",
+        "606"
+      ],
+      "hit": true
+    },
+    {
+      "id": "esc-raqueta",
+      "shouldEscalate": true,
+      "topScore": 0.8065003721950563,
+      "top5": [
+        "605",
+        "310",
+        "207",
+        "205",
+        "111"
+      ],
+      "hit": null
+    },
+    {
+      "id": "esc-mtb",
+      "shouldEscalate": true,
+      "topScore": 0.8110562965859824,
+      "top5": [
+        "311",
+        "608",
+        "308",
+        "111",
+        "610"
+      ],
+      "hit": null
+    },
+    {
+      "id": "esc-devolucion",
+      "shouldEscalate": true,
+      "topScore": 0.8195325745310074,
+      "top5": [
+        "609",
+        "505",
+        "109",
+        "404",
+        "501"
+      ],
+      "hit": null
+    },
+    {
+      "id": "esc-envio",
+      "shouldEscalate": true,
+      "topScore": 0.7978991472273971,
+      "top5": [
+        "401",
+        "110",
+        "404",
+        "402",
+        "403"
+      ],
+      "hit": null
+    },
+    {
+      "id": "esc-pedido",
+      "shouldEscalate": true,
+      "topScore": 0.7822782201808007,
+      "top5": [
+        "602",
+        "607",
+        "110",
+        "502",
+        "605"
+      ],
+      "hit": null
+    },
+    {
+      "id": "esc-cuotas",
+      "shouldEscalate": true,
+      "topScore": 0.7962407520614814,
+      "top5": [
+        "609",
+        "501",
+        "307",
+        "201",
+        "505"
+      ],
+      "hit": null
+    },
+    {
+      "id": "inject-munequera",
+      "shouldEscalate": false,
+      "topScore": 0.8918247785687287,
+      "top5": [
+        "609",
+        "603",
+        "302",
+        "408",
+        "206"
+      ],
+      "hit": true
+    },
+    {
+      "id": "hard-acampar-frio",
+      "shouldEscalate": false,
+      "topScore": 0.8609274696090728,
+      "top5": [
+        "410",
+        "109",
+        "408",
+        "601",
+        "404"
+      ],
+      "hit": false
+    },
+    {
+      "id": "hard-caminar",
+      "shouldEscalate": false,
+      "topScore": 0.8696998460502898,
+      "top5": [
+        "105",
+        "103",
+        "102",
+        "101",
+        "104"
+      ],
+      "hit": true
+    },
+    {
+      "id": "hard-regalo-nene",
+      "shouldEscalate": false,
+      "topScore": 0.8522975858674,
+      "top5": [
+        "205",
+        "209",
+        "204",
+        "210",
+        "104"
+      ],
+      "hit": true
+    },
+    {
+      "id": "hard-pileta-principiante",
+      "shouldEscalate": false,
+      "topScore": 0.8636981522942756,
+      "top5": [
+        "505",
+        "501",
+        "506",
+        "205",
+        "503"
+      ],
+      "hit": false
+    },
+    {
+      "id": "hard-lluvia-correr",
+      "shouldEscalate": false,
+      "topScore": 0.8343130062620648,
+      "top5": [
+        "108",
+        "107",
+        "109",
+        "105",
+        "306"
+      ],
+      "hit": true
+    }
+  ],
+  "answers": []
+}

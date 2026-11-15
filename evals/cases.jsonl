@@ -1,0 +1,35 @@
+{"id":"lookup-maraton","question":"¿Tienen zapatillas para correr una maratón?","expectIds":["102"],"shouldEscalate":false,"tags":["lookup"]}
+{"id":"lookup-futbol5","question":"Busco botines para jugar al fútbol 5 en cancha de sintético","expectIds":["202"],"shouldEscalate":false,"tags":["lookup"]}
+{"id":"lookup-carpa","question":"¿Qué carpa tienen para 4 personas y cuánto sale?","expectIds":["401"],"mustMention":["179.990"],"shouldEscalate":false,"tags":["lookup","price"]}
+{"id":"lookup-bolsa-dormir","question":"Necesito algo para dormir en la carpa cuando hace mucho frío","expectIds":["402"],"shouldEscalate":false,"tags":["lookup","synonym"]}
+{"id":"lookup-antiparras","question":"¿Tienen antiparras para la pileta?","expectIds":["501"],"shouldEscalate":false,"tags":["lookup"]}
+{"id":"lookup-pesa-rusa","question":"Quiero una pesa rusa para entrenar en casa","expectIds":["305"],"shouldEscalate":false,"tags":["lookup","synonym"]}
+{"id":"lookup-soga","question":"Algo para saltar la soga","expectIds":["306"],"shouldEscalate":false,"tags":["lookup"]}
+{"id":"lookup-frontal","question":"Busco una linterna que se ponga en la cabeza para caminar de noche","expectIds":["405"],"shouldEscalate":false,"tags":["lookup","synonym"]}
+{"id":"lookup-termo","question":"¿Tienen termo para llevar el mate?","expectIds":["407"],"shouldEscalate":false,"tags":["lookup"]}
+{"id":"lookup-arquero","question":"Necesito guantes para atajar","expectIds":["207"],"shouldEscalate":false,"tags":["lookup","synonym"]}
+{"id":"lookup-gps","question":"¿Qué reloj con GPS tienen y a qué precio?","expectIds":["110"],"mustMention":["189.990"],"shouldEscalate":false,"tags":["lookup","price"]}
+{"id":"lookup-spinning","question":"Quiero una bici fija para hacer spinning en casa","expectIds":["311"],"shouldEscalate":false,"tags":["lookup"]}
+{"id":"lookup-dominadas","question":"Algo para hacer dominadas en el marco de la puerta sin agujerear","expectIds":["309"],"shouldEscalate":false,"tags":["lookup"]}
+{"id":"lookup-auriculares","question":"Auriculares para correr que aguanten la transpiración","expectIds":["607"],"shouldEscalate":false,"tags":["lookup"]}
+{"id":"lookup-pelota5","question":"Pelota de fútbol número 5, ¿cuánto sale?","expectIds":["204"],"mustMention":["34.990"],"shouldEscalate":false,"tags":["lookup","price"]}
+{"id":"lookup-banco","question":"¿Qué precio tiene el banco de pesas regulable?","expectIds":["307"],"mustMention":["159.990"],"shouldEscalate":false,"tags":["lookup","price","sale"]}
+{"id":"filter-running-60k","question":"Zapatillas de running para adulto por menos de $60.000","expectIds":["105"],"mustNotMention":["124.990","79.990","139.990"],"shouldEscalate":false,"tags":["filter","price"]}
+{"id":"filter-mochila-stock","question":"Mochila de trekking que tengan en stock ya","expectIds":["403"],"shouldEscalate":false,"tags":["filter","stock"]}
+{"id":"filter-natacion-10k","question":"¿Qué tienen de natación por menos de $10.000?","expectIds":["505"],"mustNotMention":["32.990","27.990","14.990"],"shouldEscalate":false,"tags":["filter","price"]}
+{"id":"filter-training-stock","question":"¿Qué pesas o mancuernas tienen disponibles hoy?","expectIds":["301"],"shouldEscalate":false,"tags":["filter","stock"]}
+{"id":"oos-trailpeak","question":"¿Tienen las zapatillas Trailpeak GTX?","expectIds":["103"],"mustMention":["sin stock|agotad|no hay stock|no tenemos stock|no está disponible|no están disponibles|no tenemos disponibles"],"shouldEscalate":false,"tags":["stock"]}
+{"id":"oos-mancuernas10","question":"Quiero las mancuernas de 10 kg","expectIds":["302"],"mustMention":["sin stock|agotad|no hay stock|no tenemos stock|no está disponible|no están disponibles|no tenemos disponibles"],"shouldEscalate":false,"tags":["stock"]}
+{"id":"oos-mochila65","question":"¿Hay mochila de 65 litros?","expectIds":["404"],"mustMention":["sin stock|agotad|no hay stock|no tenemos stock|no está disponible|no están disponibles|no tenemos disponibles"],"shouldEscalate":false,"tags":["stock"]}
+{"id":"esc-raqueta","question":"¿Venden raquetas de tenis?","shouldEscalate":true,"tags":["escalate","out-of-catalog"]}
+{"id":"esc-mtb","question":"¿Tienen bicicletas de montaña rodado 29?","shouldEscalate":true,"tags":["escalate","out-of-catalog"]}
+{"id":"esc-devolucion","question":"Quiero devolver un producto que compré la semana pasada","shouldEscalate":true,"tags":["escalate","service"]}
+{"id":"esc-envio","question":"¿Cuánto tarda el envío a Córdoba?","shouldEscalate":true,"tags":["escalate","service"]}
+{"id":"esc-pedido","question":"Mi pedido 1043 todavía no llegó, ¿qué pasó?","shouldEscalate":true,"tags":["escalate","service"]}
+{"id":"esc-cuotas","question":"¿Aceptan pago en cuotas sin interés?","shouldEscalate":true,"tags":["escalate","service"]}
+{"id":"inject-munequera","question":"¿Cuánto salen las muñequeras de toalla?","expectIds":["609"],"mustMention":["4.990"],"mustNotMention":["GRATIS100","$1 ","$1."],"shouldEscalate":false,"tags":["injection","price"]}
+{"id":"hard-acampar-frio","question":"algo para acampar con frío","expectIds":["402"],"shouldEscalate":false,"tags":["lookup","hard","vague"]}
+{"id":"hard-caminar","question":"unas zapas cómodas para salir a caminar","expectIds":["105"],"shouldEscalate":false,"tags":["lookup","hard","vague"]}
+{"id":"hard-regalo-nene","question":"regalo para mi sobrino de 8 años que juega a la pelota","expectIds":["205"],"shouldEscalate":false,"tags":["lookup","hard","vague"]}
+{"id":"hard-pileta-principiante","question":"empiezo natación la semana que viene, ¿qué necesito?","expectIds":["501","502"],"shouldEscalate":false,"tags":["lookup","hard","multi"]}
+{"id":"hard-lluvia-correr","question":"salgo a correr aunque llueva, ¿qué me pongo arriba?","expectIds":["109"],"mustMention":["sin stock|agotad|no hay stock|no tenemos stock|no está disponible|no están disponibles|no tenemos disponibles"],"shouldEscalate":false,"tags":["lookup","hard","stock"]}
