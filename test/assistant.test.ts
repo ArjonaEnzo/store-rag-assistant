@@ -105,3 +105,21 @@ describe("ask", () => {
     expect(JSON.stringify(requests[1]!.messages[2])).toContain('"isError":true');
   });
 });
+
+describe("ask · cited products", () => {
+  it("returns the cited products' display data, deduped, in citation order", async () => {
+    const { index } = fakeIndex([
+      { product: product("101", 79990), score: 0.9 },
+      { product: product("105", 52990), score: 0.8 },
+    ]);
+    const { provider } = scripted([
+      { stopReason: "tool_use", usage: u(1, 1), content: [{ type: "tool_use", id: "t1", name: "search_products", input: { query: "zapas" } }] },
+      { stopReason: "end_turn", usage: u(1, 1), content: [{ type: "text", text: "Hay dos.\nCITED: 105, 101, 105" }] },
+    ]);
+    const r = await ask("zapas", { provider, index });
+    expect(r.products).toEqual([
+      { id: "105", name: "Zapatilla 105", price: 52990, regularPrice: 52990, onSale: false, inStock: true, url: "" },
+      { id: "101", name: "Zapatilla 101", price: 79990, regularPrice: 79990, onSale: false, inStock: true, url: "" },
+    ]);
+  });
+});

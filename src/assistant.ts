@@ -7,6 +7,8 @@ import type { ProductIndex, SearchFilters, SearchHit } from "./retrieval/index.t
 export type AskResult = {
   answer: string;
   citations: string[];
+  /** Display data of the cited products that were actually retrieved (for UIs: cards, links). */
+  products: CitedProduct[];
   escalated: boolean;
   escalationReason?: string;
   flags: string[];
@@ -17,7 +19,9 @@ export type AskResult = {
   searches: { query: string; filters: SearchFilters; hitIds: string[] }[];
 };
 
-export type AskDeps = { provider: LlmProvider; index: ProductIndex };
+export type CitedProduct = { id: string; name: string; price: number; regularPrice: number; onSale: boolean; inStock: boolean; url: string };
+
+export type AskDeps ={ provider: LlmProvider; index: ProductIndex };
 
 const MAX_TURNS = 4;
 const ESCALATION_TEXT = "Te paso con una persona del equipo para que te ayude con esto.";
@@ -148,9 +152,15 @@ export async function ask(question: string, { provider, index }: AskDeps): Promi
   const escalated = escalationReason !== undefined;
   const flags = checkAnswer({ text: answer, citedIds }, allHits, allowedPrices);
   if (!escalated && searches.length > 0 && citedIds.length === 0 && !explicitNone) flags.push("missing_citations");
+  const byId = new Map(allHits.map((h) => [h.product.id, h.product]));
+  const products: CitedProduct[] = citedIds.flatMap((id) => {
+    const p = byId.get(id);
+    return p ? [{ id: p.id, name: p.name, price: p.price, regularPrice: p.regularPrice, onSale: p.onSale, inStock: p.inStock, url: p.url }] : [];
+  });
   return {
     answer,
     citations: citedIds,
+    products,
     escalated,
     ...(escalationReason !== undefined ? { escalationReason } : {}),
     flags,
