@@ -58,6 +58,12 @@ describe("extractPrices formats (review #3)", () => {
     expect(extractPrices("ARS 79.990")).toEqual([79990]);
     expect(extractPrices("$79.990,00")).toEqual([79990]);
   });
+
+  it("handles space as thousands separator (seen in a real Groq answer: 'menos de $10 000')", () => {
+    expect(extractPrices("por menos de $10 000 y con stock")).toEqual([10000]);
+    expect(extractPrices("sale $ 79 990")).toEqual([79990]);
+    expect(extractPrices("talle 42 a $9.990 y 3 pares")).toEqual([9990]);
+  });
 });
 
 describe("escalation grading (review #4)", () => {

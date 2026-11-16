@@ -4,11 +4,12 @@ import type { SearchHit } from "./retrieval/index.ts";
  * Prices are only recognized with a currency marker ("$"/"ARS" before, or "pesos"/"ARS" after), so specs like
  * "2000 mm" or "250 kg" are not mistaken for prices. Accepts 79.990 / 79,990 / 79990 / 79.990,00 / $80 mil / $80k.
  */
-const NUM = String.raw`(\d{1,3}(?:[.,]\d{3})+|\d+)(?:,\d{1,2})?`;
+// Thousands separators: dot, comma, or (narrow/no-break) space — "$10 000" was seen in a real model answer.
+const NUM = String.raw`(\d{1,3}(?:[.,   ]\d{3})+(?!\d)|\d+)(?:,\d{1,2})?`;
 const PRICE_RE = new RegExp(String.raw`(?:\$|\bARS\b)\s?${NUM}(?:\s?(mil|k)\b)?|${NUM}\s?(?:pesos|ARS)\b`, "gi");
 
 function toNumber(digits: string, thousands = false): number {
-  const n = Number.parseInt(digits.replace(/[.,]/g, ""), 10);
+  const n = Number.parseInt(digits.replace(/[.,\s  ]/g, ""), 10);
   return thousands ? n * 1000 : n;
 }
 
