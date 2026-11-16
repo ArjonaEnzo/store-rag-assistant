@@ -1,16 +1,21 @@
 import type { SearchHit } from "./retrieval/index.ts";
 
 /**
- * Prices are only recognized with a currency marker ("$" before, or "pesos"/"ARS" after), so specs like
- * "2000 mm" or "250 kg" are not mistaken for prices. Accepts 79.990 / 79990 / 79.990,00.
+ * Prices are only recognized with a currency marker ("$"/"ARS" before, or "pesos"/"ARS" after), so specs like
+ * "2000 mm" or "250 kg" are not mistaken for prices. Accepts 79.990 / 79,990 / 79990 / 79.990,00 / $80 mil / $80k.
  */
-const PRICE_RE = /\$\s?(\d{1,3}(?:\.\d{3})+|\d+)(?:,\d{1,2})?|(\d{1,3}(?:\.\d{3})+|\d{4,})(?:,\d{1,2})?\s?(?:pesos|ars)\b/gi;
+const NUM = String.raw`(\d{1,3}(?:[.,]\d{3})+|\d+)(?:,\d{1,2})?`;
+const PRICE_RE = new RegExp(String.raw`(?:\$|\bARS\b)\s?${NUM}(?:\s?(mil|k)\b)?|${NUM}\s?(?:pesos|ARS)\b`, "gi");
+
+function toNumber(digits: string, thousands = false): number {
+  const n = Number.parseInt(digits.replace(/[.,]/g, ""), 10);
+  return thousands ? n * 1000 : n;
+}
 
 export function extractPrices(text: string): number[] {
   const out: number[] = [];
   for (const m of text.matchAll(PRICE_RE)) {
-    const digits = (m[1] ?? m[2] ?? "").replace(/\./g, "");
-    const n = Number.parseInt(digits, 10);
+    const n = m[1] !== undefined ? toNumber(m[1], m[2] !== undefined) : toNumber(m[3] ?? "");
     if (Number.isFinite(n)) out.push(n);
   }
   return out;
