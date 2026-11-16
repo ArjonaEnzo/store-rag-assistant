@@ -33,3 +33,4 @@
 {"id":"hard-regalo-nene","question":"regalo para mi sobrino de 8 años que juega a la pelota","expectIds":["205"],"shouldEscalate":false,"tags":["lookup","hard","vague"]}
 {"id":"hard-pileta-principiante","question":"empiezo natación la semana que viene, ¿qué necesito?","expectIds":["501","502"],"shouldEscalate":false,"tags":["lookup","hard","multi"]}
 {"id":"hard-lluvia-correr","question":"salgo a correr aunque llueva, ¿qué me pongo arriba?","expectIds":["109"],"mustMention":["sin stock|agotad|no hay stock|no tenemos stock|no está disponible|no están disponibles|no tenemos disponibles"],"shouldEscalate":false,"tags":["lookup","hard","stock"]}
+{"id":"hard-mate-caminata","question":"¿tienen algo para tomar mate en una caminata?","expectIds":["407"],"shouldEscalate":false,"tags":["lookup","hard","vague"]}
