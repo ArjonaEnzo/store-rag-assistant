@@ -60,13 +60,24 @@ function catalogData(hits: SearchHit[]): string {
   return `<catalog_data>\n${JSON.stringify(rows)}\n</catalog_data>${rows.length ? "" : "\nSin resultados."}`;
 }
 
-/** Splits the trailing "CITED: a,b" line off the model's final text. */
-export function parseCitations(text: string): { answer: string; citedIds: string[] } {
-  const m = text.match(/\n?\s*CITED:\s*(.*)\s*$/i);
-  if (!m) return { answer: text.trim(), citedIds: [] };
-  const list = (m[1] ?? "").trim();
-  const citedIds = /^none$/i.test(list) || !list ? [] : list.split(/[,\s]+/).filter(Boolean);
-  return { answer: text.slice(0, m.index).trim(), citedIds };
+/**
+ * Finds the last "CITED: ..." line anywhere in the model's final text (tolerating markdown like **CITED:** or
+ * backticks), removes it from the answer, and keeps only numeric product ids.
+ */
+export function parseCitations(text: string): { answer: string; citedIds: string[]; explicitNone: boolean } {
+  const lines = text.split("\n");
+  let at = -1;
+  for (let i = lines.length - 1; i >= 0; i--) {
+    if (/^[\s*_`>-]*CITED\b/i.test(lines[i]!)) {
+      at = i;
+      break;
+    }
+  }
+  if (at === -1) return { answer: text.trim(), citedIds: [], explicitNone: false };
+  const list = lines[at]!.replace(/^[\s*_`>-]*CITED[*_`]*\s*:?[*_`]*/i, "");
+  lines.splice(at, 1);
+  const citedIds = [...new Set(list.match(/\b\d+\b/g) ?? [])];
+  return { answer: lines.join("\n").trim(), citedIds, explicitNone: citedIds.length === 0 && /\bnone\b/i.test(list) };
 }
 
 export async function ask(question: string, { provider, index }: AskDeps): Promise<AskResult> {
