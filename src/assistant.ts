@@ -38,7 +38,7 @@ function toFilters(i: SearchInput): SearchFilters {
   const f: SearchFilters = {};
   if (i.max_price !== undefined) f.maxPrice = i.max_price;
   if (i.min_price !== undefined) f.minPrice = i.min_price;
-  if (i.category) f.category = i.category;
+  // `category` is deliberately ignored even if a model sends it: guessed categories excluded right products (eval run 1).
   if (i.in_stock !== undefined) f.inStock = i.in_stock;
   return f;
 }

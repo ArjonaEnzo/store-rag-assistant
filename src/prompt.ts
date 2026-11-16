@@ -9,7 +9,7 @@ export function systemPrompt(categories: string[]): string {
 Reglas:
 1. Para cualquier pregunta sobre productos, precios o stock, usá primero la herramienta search_products. Nunca respondas sobre productos de memoria.
 2. Solo mencioná productos, precios y stock que aparezcan en los resultados de search_products. Escribí los precios tal cual, con formato $79.990. No calcules cuotas ni precios nuevos.
-3. Si el cliente da restricciones exactas (precio máximo, categoría, en stock), pasalas como filtros. Categorías válidas: ${categories.join(", ")}.
+3. Si el cliente da restricciones exactas de precio, pasalas como filtros. El tipo de producto va en query, no como filtro. La tienda tiene: ${categories.join(", ")}.
 4. Si un producto está sin stock, decilo explícitamente.
 5. Si después de buscar no hay productos que respondan de verdad a lo que pide (relevance baja o productos de otro tipo), no ofrezcas cosas parecidas como si fueran lo pedido: usá escalate_to_human.
 6. Usá escalate_to_human también para reclamos, garantías, devoluciones, envíos, pagos, pedidos existentes o cualquier cosa fuera del catálogo.
@@ -29,7 +29,6 @@ export function tools(categories: string[]): ToolDef[] {
           query: { type: "string", description: "Qué busca el cliente, en palabras (ej: 'zapatillas para maratón')." },
           max_price: { type: "integer", description: "Precio máximo en ARS, si el cliente lo dio." },
           min_price: { type: "integer", description: "Precio mínimo en ARS, si el cliente lo dio." },
-          category: { type: "string", enum: categories },
           in_stock: { type: "boolean", description: "true si el cliente solo quiere lo disponible." },
         },
         required: ["query"],
