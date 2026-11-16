@@ -43,7 +43,7 @@ function toFilters(i: SearchInput): SearchFilters {
   return f;
 }
 
-function catalogData(hits: SearchHit[]): string {
+export function catalogData(hits: SearchHit[]): string {
   const rows = hits.map(({ product: p, score }) => ({
     id: p.id,
     name: p.name,
@@ -57,7 +57,9 @@ function catalogData(hits: SearchHit[]): string {
     description: p.description,
     relevance: Number(score.toFixed(3)),
   }));
-  return `<catalog_data>\n${JSON.stringify(rows)}\n</catalog_data>${rows.length ? "" : "\nSin resultados."}`;
+  // Escape < and > so catalog text (names, descriptions) can never close the <catalog_data> wrapper.
+  const json = JSON.stringify(rows).replace(/</g, "\\u003c").replace(/>/g, "\\u003e");
+  return `<catalog_data>\n${json}\n</catalog_data>${rows.length ? "" : "\nSin resultados."}`;
 }
 
 /**
