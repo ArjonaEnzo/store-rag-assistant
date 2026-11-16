@@ -20,7 +20,9 @@ question ──► LLM (Claude Haiku 5.5 · or Ollama) ──tool call──► 
                 ▼
 answer + "CITED: ids" ──► deterministic guards ──► { answer, citations, escalated, flags, usage, costUsd, latencyMs }
                            · cited id not in this turn's results  → uncited_product:<id>
-                           · price not in results/customer budget → price_not_in_results:<n>
+                           · price not in results / not a number the customer wrote → price_not_in_results:<n>
+                           · searched but cited nothing           → missing_citations
+                           · truncated (max_tokens) or refused turn → escalated, never executed
 ```
 
 - **Platform-agnostic core.** `StoreAdapter` normalizes products into one `Product` type. WooCommerce
@@ -37,7 +39,7 @@ Demo data: a fictional Argentine sports store, 59 products, ARS prices, WooComme
 
 ```bash
 pnpm install
-pnpm test                       # 24 unit tests, no network
+pnpm test                       # 38 unit tests, no network
 pnpm eval --retrieval-only      # retrieval evals, free (first run downloads the ~120 MB embedding model)
 ```
 
@@ -53,15 +55,15 @@ Free alternative: install [Ollama](https://ollama.com), `ollama pull qwen2.5:3b`
 
 ## Evals
 
-`evals/cases.jsonl` — 34 cases: catalog lookups, exact price/stock filters, out-of-stock, out-of-catalog
+`evals/cases.jsonl` — 35 cases: catalog lookups, exact price/stock filters, out-of-stock, out-of-catalog
 and service questions that must escalate, a prompt-injection product, and 5 deliberately vague "hard" queries.
 
 | layer | what it measures | cost | result (2026-11-15) |
 |---|---|---|---|
 | 1 · retrieval | expected product in top-5 of semantic search (no LLM) | USD 0 | **93.1 %** (27/29) |
-| 2 · answers | cites expected products, mentions required facts, no forbidden text, no guard flags, escalates iff it should | ~USD 0.02 / run (estimate) | **not measured yet** |
+| 2 · answers | cites expected products, mentions required facts, no forbidden text, no guard flags, escalates iff it should — and an escalation must not also pitch products or prices | ~USD 0.02 / run (estimate) | **not measured yet** |
 
-Runs are saved to `evals/results/<timestamp>.{json,md}`.
+Runs are saved to `evals/results/` (git-ignored); the reference run is in `evals/baseline/`.
 
 ## Cost
 
@@ -89,9 +91,15 @@ this table will be replaced with measured numbers after the first layer-2 run.
    out-of-catalog match ("raquetas de tenis") scores 0.811 vs a 0.834 minimum for in-catalog questions.
    A 0.02 margin is too thin for a hard threshold, so escalation relies on the model reading the
    results — to be verified in layer 2.
-4. **Price guard needs a currency marker.** A bare "79990" without `$`/"pesos" is not checked, to avoid
+4. **Price guard needs a currency marker.** A bare "79990" without `$`/`ARS`/"pesos" is not checked, to avoid
    flagging specs like "2000 mm". A hallucinated unmarked price would slip through.
-5. **Eval bias.** Cases were written by the same person who wrote the catalog; the first run scored 100 %
+5. **Price guard checks the set, not the pairing.** Allowed prices are the union of all retrieved products,
+   so stating product A's real price for product B passes the guard.
+6. **Citations are self-reported.** The model writes its own `CITED:` line; the guard checks the ids exist
+   and flags a missing line, but not whether every product *named* in the text was cited.
+7. **Prompt-cache marker is likely a no-op.** System prompt + tools are probably below Haiku's minimum
+   cacheable prefix, and cache writes are counted at 1× input instead of 1.25×. Negligible at this size.
+8. **Eval bias.** Cases were written by the same person who wrote the catalog; the first run scored 100 %
    until vaguer real-customer phrasings were added. Needs questions from real users.
 
 ## Roadmap
