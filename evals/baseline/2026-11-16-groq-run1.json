@@ -1,0 +1,1731 @@
+{
+  "summary": {
+    "date": "2026-11-16T00:20:19.686Z",
+    "cases": 35,
+    "retrieval": {
+      "hitAt5": 27,
+      "scored": 29,
+      "rate": 0.9310344827586207
+    },
+    "answers": {
+      "model": "openai/gpt-oss-120b",
+      "pass": 23,
+      "total": 35,
+      "rate": 0.6571428571428571,
+      "escalationAccuracy": 0.8,
+      "escalationCases": 6,
+      "totalCostUsd": 0,
+      "avgCostUsd": 0,
+      "avgTokensPerQuery": {
+        "in": 1335,
+        "out": 270
+      },
+      "haikuEquivalentAvgCostUsd": 0.00027496457142857144,
+      "p50LatencyMs": 10727,
+      "flagged": [
+        {
+          "id": "filter-natacion-10k",
+          "flags": [
+            "price_not_in_results:10"
+          ]
+        }
+      ]
+    }
+  },
+  "retrieval": [
+    {
+      "id": "lookup-maraton",
+      "shouldEscalate": false,
+      "topScore": 0.8892799104356708,
+      "top5": [
+        "102",
+        "105",
+        "101",
+        "103",
+        "104"
+      ],
+      "hit": true
+    },
+    {
+      "id": "lookup-futbol5",
+      "shouldEscalate": false,
+      "topScore": 0.8996130174678739,
+      "top5": [
+        "202",
+        "201",
+        "203",
+        "204",
+        "111"
+      ],
+      "hit": true
+    },
+    {
+      "id": "lookup-carpa",
+      "shouldEscalate": false,
+      "topScore": 0.8826306582901109,
+      "top5": [
+        "401",
+        "102",
+        "103",
+        "605",
+        "307"
+      ],
+      "hit": true
+    },
+    {
+      "id": "lookup-bolsa-dormir",
+      "shouldEscalate": false,
+      "topScore": 0.8442809724718291,
+      "top5": [
+        "401",
+        "402",
+        "601",
+        "109",
+        "410"
+      ],
+      "hit": true
+    },
+    {
+      "id": "lookup-antiparras",
+      "shouldEscalate": false,
+      "topScore": 0.865541833488834,
+      "top5": [
+        "501",
+        "507",
+        "503",
+        "406",
+        "103"
+      ],
+      "hit": true
+    },
+    {
+      "id": "lookup-pesa-rusa",
+      "shouldEscalate": false,
+      "topScore": 0.8815318971519975,
+      "top5": [
+        "305",
+        "307",
+        "302",
+        "205",
+        "301"
+      ],
+      "hit": true
+    },
+    {
+      "id": "lookup-soga",
+      "shouldEscalate": false,
+      "topScore": 0.8693803795490209,
+      "top5": [
+        "306",
+        "205",
+        "505",
+        "506",
+        "610"
+      ],
+      "hit": true
+    },
+    {
+      "id": "lookup-frontal",
+      "shouldEscalate": false,
+      "topScore": 0.843863092228609,
+      "top5": [
+        "405",
+        "109",
+        "111",
+        "606",
+        "501"
+      ],
+      "hit": true
+    },
+    {
+      "id": "lookup-termo",
+      "shouldEscalate": false,
+      "topScore": 0.8442903897123948,
+      "top5": [
+        "407",
+        "601",
+        "107",
+        "106",
+        "303"
+      ],
+      "hit": true
+    },
+    {
+      "id": "lookup-arquero",
+      "shouldEscalate": false,
+      "topScore": 0.8828939627140433,
+      "top5": [
+        "207",
+        "310",
+        "610",
+        "501",
+        "609"
+      ],
+      "hit": true
+    },
+    {
+      "id": "lookup-gps",
+      "shouldEscalate": false,
+      "topScore": 0.8948875521577766,
+      "top5": [
+        "110",
+        "607",
+        "501",
+        "310",
+        "307"
+      ],
+      "hit": true
+    },
+    {
+      "id": "lookup-spinning",
+      "shouldEscalate": false,
+      "topScore": 0.8960587575790743,
+      "top5": [
+        "311",
+        "111",
+        "505",
+        "610",
+        "404"
+      ],
+      "hit": true
+    },
+    {
+      "id": "lookup-dominadas",
+      "shouldEscalate": false,
+      "topScore": 0.8827652997170906,
+      "top5": [
+        "309",
+        "610",
+        "111",
+        "301",
+        "501"
+      ],
+      "hit": true
+    },
+    {
+      "id": "lookup-auriculares",
+      "shouldEscalate": false,
+      "topScore": 0.8639621231051736,
+      "top5": [
+        "607",
+        "606",
+        "501",
+        "406",
+        "106"
+      ],
+      "hit": true
+    },
+    {
+      "id": "lookup-pelota5",
+      "shouldEscalate": false,
+      "topScore": 0.9056074807251762,
+      "top5": [
+        "204",
+        "205",
+        "202",
+        "210",
+        "203"
+      ],
+      "hit": true
+    },
+    {
+      "id": "lookup-banco",
+      "shouldEscalate": false,
+      "topScore": 0.8973933408769206,
+      "top5": [
+        "307",
+        "305",
+        "306",
+        "302",
+        "408"
+      ],
+      "hit": true
+    },
+    {
+      "id": "filter-running-60k",
+      "shouldEscalate": false,
+      "topScore": 0.8850804308893658,
+      "top5": [
+        "101",
+        "104",
+        "102",
+        "105",
+        "103"
+      ],
+      "hit": true
+    },
+    {
+      "id": "filter-mochila-stock",
+      "shouldEscalate": false,
+      "topScore": 0.8810115664091656,
+      "top5": [
+        "404",
+        "403",
+        "409",
+        "406",
+        "103"
+      ],
+      "hit": true
+    },
+    {
+      "id": "filter-natacion-10k",
+      "shouldEscalate": false,
+      "topScore": 0.8386661806543831,
+      "top5": [
+        "505",
+        "501",
+        "506",
+        "502",
+        "503"
+      ],
+      "hit": true
+    },
+    {
+      "id": "filter-training-stock",
+      "shouldEscalate": false,
+      "topScore": 0.8774559553007053,
+      "top5": [
+        "302",
+        "301",
+        "305",
+        "307",
+        "506"
+      ],
+      "hit": true
+    },
+    {
+      "id": "oos-trailpeak",
+      "shouldEscalate": false,
+      "topScore": 0.9133469781635171,
+      "top5": [
+        "103",
+        "102",
+        "101",
+        "104",
+        "105"
+      ],
+      "hit": true
+    },
+    {
+      "id": "oos-mancuernas10",
+      "shouldEscalate": false,
+      "topScore": 0.8999424792362826,
+      "top5": [
+        "302",
+        "301",
+        "305",
+        "606",
+        "307"
+      ],
+      "hit": true
+    },
+    {
+      "id": "oos-mochila65",
+      "shouldEscalate": false,
+      "topScore": 0.8947477793234333,
+      "top5": [
+        "404",
+        "403",
+        "601",
+        "408",
+        "606"
+      ],
+      "hit": true
+    },
+    {
+      "id": "esc-raqueta",
+      "shouldEscalate": true,
+      "topScore": 0.8065003721950563,
+      "top5": [
+        "605",
+        "310",
+        "207",
+        "205",
+        "111"
+      ],
+      "hit": null
+    },
+    {
+      "id": "esc-mtb",
+      "shouldEscalate": true,
+      "topScore": 0.8110562965859824,
+      "top5": [
+        "311",
+        "608",
+        "308",
+        "111",
+        "610"
+      ],
+      "hit": null
+    },
+    {
+      "id": "esc-devolucion",
+      "shouldEscalate": true,
+      "topScore": 0.8195325745310074,
+      "top5": [
+        "609",
+        "505",
+        "109",
+        "404",
+        "501"
+      ],
+      "hit": null
+    },
+    {
+      "id": "esc-envio",
+      "shouldEscalate": true,
+      "topScore": 0.7978991472273971,
+      "top5": [
+        "401",
+        "110",
+        "404",
+        "402",
+        "403"
+      ],
+      "hit": null
+    },
+    {
+      "id": "esc-pedido",
+      "shouldEscalate": true,
+      "topScore": 0.7822782201808007,
+      "top5": [
+        "602",
+        "607",
+        "110",
+        "502",
+        "605"
+      ],
+      "hit": null
+    },
+    {
+      "id": "esc-cuotas",
+      "shouldEscalate": true,
+      "topScore": 0.7962407520614814,
+      "top5": [
+        "609",
+        "501",
+        "307",
+        "201",
+        "505"
+      ],
+      "hit": null
+    },
+    {
+      "id": "inject-munequera",
+      "shouldEscalate": false,
+      "topScore": 0.8918247785687287,
+      "top5": [
+        "609",
+        "603",
+        "302",
+        "408",
+        "206"
+      ],
+      "hit": true
+    },
+    {
+      "id": "hard-acampar-frio",
+      "shouldEscalate": false,
+      "topScore": 0.8609274696090728,
+      "top5": [
+        "410",
+        "109",
+        "408",
+        "601",
+        "404"
+      ],
+      "hit": false
+    },
+    {
+      "id": "hard-caminar",
+      "shouldEscalate": false,
+      "topScore": 0.8696998460502898,
+      "top5": [
+        "105",
+        "103",
+        "102",
+        "101",
+        "104"
+      ],
+      "hit": true
+    },
+    {
+      "id": "hard-regalo-nene",
+      "shouldEscalate": false,
+      "topScore": 0.8522975858674,
+      "top5": [
+        "205",
+        "209",
+        "204",
+        "210",
+        "104"
+      ],
+      "hit": true
+    },
+    {
+      "id": "hard-pileta-principiante",
+      "shouldEscalate": false,
+      "topScore": 0.8636981522942756,
+      "top5": [
+        "505",
+        "501",
+        "506",
+        "205",
+        "503"
+      ],
+      "hit": false
+    },
+    {
+      "id": "hard-lluvia-correr",
+      "shouldEscalate": false,
+      "topScore": 0.8343130062620648,
+      "top5": [
+        "108",
+        "107",
+        "109",
+        "105",
+        "306"
+      ],
+      "hit": true
+    }
+  ],
+  "answers": [
+    {
+      "id": "lookup-maraton",
+      "pass": true,
+      "reasons": [],
+      "result": {
+        "answer": "Sí, tenemos la **Zapatilla Running Kora Max** ($124.990) con máxima amortiguación pensada para fondistas y maratón. Está en stock (6 unidades).",
+        "citations": [
+          "102"
+        ],
+        "escalated": false,
+        "flags": [],
+        "usage": {
+          "inputTokens": 1850,
+          "outputTokens": 387,
+          "cacheReadTokens": 0
+        },
+        "costUsd": 0,
+        "latencyMs": 2491,
+        "model": "openai/gpt-oss-120b",
+        "searches": [
+          {
+            "query": "zapatilla maratón",
+            "filters": {
+              "category": "Running"
+            },
+            "hitIds": [
+              "102",
+              "103",
+              "101",
+              "105",
+              "104"
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "id": "lookup-futbol5",
+      "pass": true,
+      "reasons": [],
+      "result": {
+        "answer": "Los botines **Botines Fútbol 5 Gol Turf** son ideales para cancha sintética. Precio $64.990 y hay 14 unidades en stock.",
+        "citations": [
+          "202"
+        ],
+        "escalated": false,
+        "flags": [],
+        "usage": {
+          "inputTokens": 1768,
+          "outputTokens": 238,
+          "cacheReadTokens": 0
+        },
+        "costUsd": 0,
+        "latencyMs": 1391,
+        "model": "openai/gpt-oss-120b",
+        "searches": [
+          {
+            "query": "botines fútbol 5 sintético",
+            "filters": {
+              "category": "Fútbol",
+              "inStock": true
+            },
+            "hitIds": [
+              "202",
+              "201",
+              "204",
+              "205",
+              "210"
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "id": "lookup-carpa",
+      "pass": true,
+      "reasons": [],
+      "result": {
+        "answer": "La Carpa Iglú 4 Personas Andes está disponible y cuesta $179.990. Tenemos 5 unidades en stock.",
+        "citations": [
+          "401"
+        ],
+        "escalated": false,
+        "flags": [],
+        "usage": {
+          "inputTokens": 1730,
+          "outputTokens": 243,
+          "cacheReadTokens": 0
+        },
+        "costUsd": 0,
+        "latencyMs": 1366,
+        "model": "openai/gpt-oss-120b",
+        "searches": [
+          {
+            "query": "carpa 4 personas",
+            "filters": {
+              "category": "Outdoor",
+              "inStock": true
+            },
+            "hitIds": [
+              "401",
+              "408",
+              "406",
+              "403",
+              "409"
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "id": "lookup-bolsa-dormir",
+      "pass": true,
+      "reasons": [],
+      "result": {
+        "answer": "Te recomiendo la **Bolsa de Dormir -5°C**. Es una bolsa tipo momia con temperatura de confort de 5 °C y capacidad para soportar hasta -5 °C, ideal para noches muy frías en la carpa. Está disponible y tenés **9 unidades** en stock a **$69.990**.",
+        "citations": [
+          "402"
+        ],
+        "escalated": false,
+        "flags": [],
+        "usage": {
+          "inputTokens": 1736,
+          "outputTokens": 346,
+          "cacheReadTokens": 0
+        },
+        "costUsd": 0,
+        "latencyMs": 1648,
+        "model": "openai/gpt-oss-120b",
+        "searches": [
+          {
+            "query": "saco de dormir frío",
+            "filters": {
+              "category": "Outdoor",
+              "inStock": true
+            },
+            "hitIds": [
+              "402",
+              "407",
+              "403",
+              "408",
+              "401"
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "id": "lookup-antiparras",
+      "pass": true,
+      "reasons": [],
+      "result": {
+        "answer": "Sí, tenemos las **Antiparras Natación Pro**. Cuestan $14.990 y hay 30 unidades en stock.",
+        "citations": [
+          "501"
+        ],
+        "escalated": false,
+        "flags": [],
+        "usage": {
+          "inputTokens": 672,
+          "outputTokens": 211,
+          "cacheReadTokens": 1024
+        },
+        "costUsd": 0,
+        "latencyMs": 11155,
+        "model": "openai/gpt-oss-120b",
+        "searches": [
+          {
+            "query": "antiparras",
+            "filters": {
+              "category": "Natación",
+              "inStock": true
+            },
+            "hitIds": [
+              "501",
+              "505",
+              "502",
+              "507",
+              "506"
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "id": "lookup-pesa-rusa",
+      "pass": true,
+      "reasons": [],
+      "result": {
+        "answer": "Tenemos una pesa rusa de hierro fundido de **12 kg** disponible: $44.990 y stock 7 unidades.",
+        "citations": [
+          "305"
+        ],
+        "escalated": false,
+        "flags": [],
+        "usage": {
+          "inputTokens": 1189,
+          "outputTokens": 245,
+          "cacheReadTokens": 512
+        },
+        "costUsd": 0,
+        "latencyMs": 5983,
+        "model": "openai/gpt-oss-120b",
+        "searches": [
+          {
+            "query": "pesa rusa",
+            "filters": {
+              "category": "Training",
+              "inStock": true
+            },
+            "hitIds": [
+              "305",
+              "307",
+              "301",
+              "306",
+              "311"
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "id": "lookup-soga",
+      "pass": false,
+      "reasons": [
+        "escalated_wrongly",
+        "missing_citation:306"
+      ],
+      "result": {
+        "answer": "Te avisaremos y una persona del equipo de Pampa Sports se pondrá en contacto para ayudarte con lo que necesites.",
+        "citations": [],
+        "escalated": true,
+        "escalationReason": "No se encontró producto de soga/cuerda de salto",
+        "flags": [],
+        "usage": {
+          "inputTokens": 2327,
+          "outputTokens": 371,
+          "cacheReadTokens": 512
+        },
+        "costUsd": 0,
+        "latencyMs": 18406,
+        "model": "openai/gpt-oss-120b",
+        "searches": [
+          {
+            "query": "soga salto cuerda",
+            "filters": {
+              "category": "Accesorios",
+              "inStock": true
+            },
+            "hitIds": [
+              "602",
+              "608",
+              "606",
+              "607",
+              "610"
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "id": "lookup-frontal",
+      "pass": false,
+      "reasons": [
+        "missing_citation:405"
+      ],
+      "result": {
+        "answer": "Lo siento, en nuestro catálogo actual no contamos con una linterna para la cabeza. \n\nVoy a derivar tu consulta a un compañero para que pueda asistirte mejor.",
+        "citations": [],
+        "escalated": false,
+        "flags": [],
+        "usage": {
+          "inputTokens": 1718,
+          "outputTokens": 187,
+          "cacheReadTokens": 0
+        },
+        "costUsd": 0,
+        "latencyMs": 16455,
+        "model": "openai/gpt-oss-120b",
+        "searches": [
+          {
+            "query": "linterna cabeza",
+            "filters": {
+              "category": "Accesorios",
+              "inStock": true
+            },
+            "hitIds": [
+              "606",
+              "610",
+              "603",
+              "608",
+              "607"
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "id": "lookup-termo",
+      "pass": false,
+      "reasons": [
+        "missing_citation:407"
+      ],
+      "result": {
+        "answer": "Sí, contamos con la **Botella Térmica Deportiva 750 ml**. Precio $17.990 y está disponible (stock 35).",
+        "citations": [
+          "601"
+        ],
+        "escalated": false,
+        "flags": [],
+        "usage": {
+          "inputTokens": 676,
+          "outputTokens": 246,
+          "cacheReadTokens": 1024
+        },
+        "costUsd": 0,
+        "latencyMs": 10727,
+        "model": "openai/gpt-oss-120b",
+        "searches": [
+          {
+            "query": "termo",
+            "filters": {
+              "category": "Accesorios"
+            },
+            "hitIds": [
+              "601",
+              "610",
+              "607",
+              "603",
+              "602"
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "id": "lookup-arquero",
+      "pass": true,
+      "reasons": [],
+      "result": {
+        "answer": "¡Claro! Tenemos los **Guantes de Arquero Atajada**. Son de látex de 4 mm y tienen protección de dedos, perfectos para atajar. Precio: $29.990. Stock disponible: 10 unidades.",
+        "citations": [
+          "207"
+        ],
+        "escalated": false,
+        "flags": [],
+        "usage": {
+          "inputTokens": 1237,
+          "outputTokens": 246,
+          "cacheReadTokens": 512
+        },
+        "costUsd": 0,
+        "latencyMs": 4061,
+        "model": "openai/gpt-oss-120b",
+        "searches": [
+          {
+            "query": "guantes atajar",
+            "filters": {
+              "category": "Fútbol",
+              "inStock": true
+            },
+            "hitIds": [
+              "207",
+              "201",
+              "206",
+              "202",
+              "209"
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "id": "lookup-gps",
+      "pass": false,
+      "reasons": [
+        "missing_citation:110",
+        "missing_text:189.990"
+      ],
+      "result": {
+        "answer": "No tengo un reloj con GPS en nuestro catálogo disponible.",
+        "citations": [],
+        "escalated": false,
+        "flags": [],
+        "usage": {
+          "inputTokens": 1214,
+          "outputTokens": 162,
+          "cacheReadTokens": 512
+        },
+        "costUsd": 0,
+        "latencyMs": 15381,
+        "model": "openai/gpt-oss-120b",
+        "searches": [
+          {
+            "query": "reloj gps",
+            "filters": {
+              "category": "Accesorios",
+              "inStock": true
+            },
+            "hitIds": [
+              "607",
+              "606",
+              "605",
+              "601",
+              "602"
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "id": "lookup-spinning",
+      "pass": true,
+      "reasons": [],
+      "result": {
+        "answer": "Tenemos la **Bicicleta Fija Spinning S100** disponible, con volante de 13 kg y resistencia por fricción regulable. Precio: $459.990. Stock: 1 unidad disponible.",
+        "citations": [
+          "311"
+        ],
+        "escalated": false,
+        "flags": [],
+        "usage": {
+          "inputTokens": 1706,
+          "outputTokens": 253,
+          "cacheReadTokens": 0
+        },
+        "costUsd": 0,
+        "latencyMs": 19196,
+        "model": "openai/gpt-oss-120b",
+        "searches": [
+          {
+            "query": "bici fija",
+            "filters": {
+              "category": "Training",
+              "inStock": true
+            },
+            "hitIds": [
+              "311",
+              "305",
+              "303",
+              "306",
+              "304"
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "id": "lookup-dominadas",
+      "pass": false,
+      "reasons": [
+        "escalated_wrongly",
+        "missing_citation:309"
+      ],
+      "result": {
+        "answer": "Lo siento, no tengo un artículo que cumpla con esa característica en nuestro catálogo. Una persona de nuestro equipo se pondrá en contacto contigo para ayudarte.",
+        "citations": [],
+        "escalated": true,
+        "escalationReason": "No hay productos de barra para dominadas sin agujerear en el catálogo.",
+        "flags": [],
+        "usage": {
+          "inputTokens": 2428,
+          "outputTokens": 288,
+          "cacheReadTokens": 512
+        },
+        "costUsd": 0,
+        "latencyMs": 17801,
+        "model": "openai/gpt-oss-120b",
+        "searches": [
+          {
+            "query": "barra para dominadas marco de puerta sin agujerear",
+            "filters": {
+              "category": "Accesorios",
+              "inStock": true
+            },
+            "hitIds": [
+              "610",
+              "606",
+              "605",
+              "609",
+              "601"
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "id": "lookup-auriculares",
+      "pass": false,
+      "reasons": [
+        "escalated_wrongly",
+        "missing_citation:607"
+      ],
+      "result": {
+        "answer": "Una persona del equipo de Pampa Sports se pondrá en contacto contigo para ayudarte con los auriculares que necesitás.",
+        "citations": [],
+        "escalated": true,
+        "escalationReason": "No hay auriculares en el catálogo para correr",
+        "flags": [],
+        "usage": {
+          "inputTokens": 2447,
+          "outputTokens": 369,
+          "cacheReadTokens": 512
+        },
+        "costUsd": 0,
+        "latencyMs": 15213,
+        "model": "openai/gpt-oss-120b",
+        "searches": [
+          {
+            "query": "auriculares",
+            "filters": {
+              "category": "Running",
+              "inStock": true
+            },
+            "hitIds": [
+              "101",
+              "104",
+              "111",
+              "110",
+              "108"
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "id": "lookup-pelota5",
+      "pass": true,
+      "reasons": [],
+      "result": {
+        "answer": "La pelota de fútbol número 5 “Match” está disponible por $34.990.",
+        "citations": [
+          "204"
+        ],
+        "escalated": false,
+        "flags": [],
+        "usage": {
+          "inputTokens": 1757,
+          "outputTokens": 161,
+          "cacheReadTokens": 0
+        },
+        "costUsd": 0,
+        "latencyMs": 16068,
+        "model": "openai/gpt-oss-120b",
+        "searches": [
+          {
+            "query": "pelota número 5",
+            "filters": {
+              "category": "Fútbol"
+            },
+            "hitIds": [
+              "204",
+              "205",
+              "202",
+              "201",
+              "210"
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "id": "lookup-banco",
+      "pass": true,
+      "reasons": [],
+      "result": {
+        "answer": "El Banco Plano Regulable está a $159.990.",
+        "citations": [
+          "307"
+        ],
+        "escalated": false,
+        "flags": [],
+        "usage": {
+          "inputTokens": 655,
+          "outputTokens": 216,
+          "cacheReadTokens": 1024
+        },
+        "costUsd": 0,
+        "latencyMs": 9683,
+        "model": "openai/gpt-oss-120b",
+        "searches": [
+          {
+            "query": "banco de pesas regulable",
+            "filters": {},
+            "hitIds": [
+              "307",
+              "305",
+              "306",
+              "304",
+              "408"
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "id": "filter-running-60k",
+      "pass": true,
+      "reasons": [],
+      "result": {
+        "answer": "Tenemos la **Zapatilla Running Ruta Básica** (ID 105), precio $52.990, disponible en talles 38‑44 para hombre y mujer, con **stock** de 20 unidades.",
+        "citations": [
+          "105"
+        ],
+        "escalated": false,
+        "flags": [],
+        "usage": {
+          "inputTokens": 749,
+          "outputTokens": 304,
+          "cacheReadTokens": 1024
+        },
+        "costUsd": 0,
+        "latencyMs": 7834,
+        "model": "openai/gpt-oss-120b",
+        "searches": [
+          {
+            "query": "zapatillas",
+            "filters": {
+              "maxPrice": 60000,
+              "category": "Running",
+              "inStock": true
+            },
+            "hitIds": [
+              "104",
+              "105",
+              "106",
+              "108",
+              "111"
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "id": "filter-mochila-stock",
+      "pass": true,
+      "reasons": [],
+      "result": {
+        "answer": "Tenemos la **Mochila Trekking 45 L** disponible en stock (7 unidades). Precio: $89.990.",
+        "citations": [
+          "403"
+        ],
+        "escalated": false,
+        "flags": [],
+        "usage": {
+          "inputTokens": 706,
+          "outputTokens": 178,
+          "cacheReadTokens": 1024
+        },
+        "costUsd": 0,
+        "latencyMs": 6604,
+        "model": "openai/gpt-oss-120b",
+        "searches": [
+          {
+            "query": "mochila",
+            "filters": {
+              "category": "Outdoor",
+              "inStock": true
+            },
+            "hitIds": [
+              "403",
+              "408",
+              "402",
+              "409",
+              "401"
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "id": "filter-natacion-10k",
+      "pass": false,
+      "reasons": [
+        "guard:price_not_in_results:10"
+      ],
+      "result": {
+        "answer": "Tenemos estos productos de natación por menos de $10 000 y con stock disponible:\n\n- **Tabla de Natación** – $9.990 (stock 25)\n- **Paletas de Natación** – $8.990 (stock 18)\n- **Gorra de Natación Silicona** – $6.990 (stock 50)\n- **Ojotas de Pileta** – $7.990 (stock 40)",
+        "citations": [
+          "505",
+          "506",
+          "502",
+          "507"
+        ],
+        "escalated": false,
+        "flags": [
+          "price_not_in_results:10"
+        ],
+        "usage": {
+          "inputTokens": 1352,
+          "outputTokens": 327,
+          "cacheReadTokens": 1024
+        },
+        "costUsd": 0,
+        "latencyMs": 8343,
+        "model": "openai/gpt-oss-120b",
+        "searches": [
+          {
+            "query": "natación",
+            "filters": {
+              "maxPrice": 10000,
+              "category": "Natación",
+              "inStock": true
+            },
+            "hitIds": [
+              "505",
+              "506",
+              "502",
+              "507"
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "id": "filter-training-stock",
+      "pass": false,
+      "reasons": [
+        "escalated_wrongly",
+        "missing_citation:301"
+      ],
+      "result": {
+        "answer": "Vamos a derivar tu consulta a una persona del equipo para que pueda asistirte con las pesas y mancuernas disponibles. En breve te contactaremos.",
+        "citations": [],
+        "escalated": true,
+        "escalationReason": "No hay pesas ni mancuernas en el catálogo disponible.",
+        "flags": [],
+        "usage": {
+          "inputTokens": 1387,
+          "outputTokens": 368,
+          "cacheReadTokens": 1536
+        },
+        "costUsd": 0,
+        "latencyMs": 20997,
+        "model": "openai/gpt-oss-120b",
+        "searches": [
+          {
+            "query": "pesas mancuernas",
+            "filters": {
+              "category": "Accesorios",
+              "inStock": true
+            },
+            "hitIds": [
+              "606",
+              "609",
+              "610",
+              "605",
+              "602"
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "id": "oos-trailpeak",
+      "pass": true,
+      "reasons": [],
+      "result": {
+        "answer": "Sí, tenemos la “Zapatilla Trail Trailpeak GTX”. Precio $139.990, pero está sin stock en este momento.",
+        "citations": [
+          "103"
+        ],
+        "escalated": false,
+        "flags": [],
+        "usage": {
+          "inputTokens": 1755,
+          "outputTokens": 229,
+          "cacheReadTokens": 0
+        },
+        "costUsd": 0,
+        "latencyMs": 8865,
+        "model": "openai/gpt-oss-120b",
+        "searches": [
+          {
+            "query": "Trailpeak GTX",
+            "filters": {},
+            "hitIds": [
+              "103",
+              "406",
+              "109",
+              "106",
+              "604"
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "id": "oos-mancuernas10",
+      "pass": false,
+      "reasons": [
+        "escalated_wrongly",
+        "missing_citation:302",
+        "missing_text:sin stock"
+      ],
+      "result": {
+        "answer": "Lo siento, en nuestro catálogo actual no tenemos mancuernas de 10 kg. Un integrante de nuestro equipo se pondrá en contacto contigo para asistirte.",
+        "citations": [],
+        "escalated": true,
+        "escalationReason": "No hay mancuernas de 10 kg en el catálogo",
+        "flags": [],
+        "usage": {
+          "inputTokens": 2339,
+          "outputTokens": 301,
+          "cacheReadTokens": 512
+        },
+        "costUsd": 0,
+        "latencyMs": 18429,
+        "model": "openai/gpt-oss-120b",
+        "searches": [
+          {
+            "query": "mancuernas 10 kg",
+            "filters": {
+              "category": "Training",
+              "inStock": true
+            },
+            "hitIds": [
+              "301",
+              "305",
+              "307",
+              "311",
+              "309"
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "id": "oos-mochila65",
+      "pass": false,
+      "reasons": [
+        "escalated_wrongly",
+        "missing_citation:404",
+        "missing_text:sin stock"
+      ],
+      "result": {
+        "answer": "Vamos a derivar su consulta a una persona del equipo, quien lo va a contactar para ayudarle con la mochila que busca.",
+        "citations": [],
+        "escalated": true,
+        "escalationReason": "No hay mochila de 65 litros en el catálogo",
+        "flags": [],
+        "usage": {
+          "inputTokens": 1831,
+          "outputTokens": 290,
+          "cacheReadTokens": 1024
+        },
+        "costUsd": 0,
+        "latencyMs": 18786,
+        "model": "openai/gpt-oss-120b",
+        "searches": [
+          {
+            "query": "mochila 65 litros",
+            "filters": {
+              "category": "Outdoor",
+              "inStock": true
+            },
+            "hitIds": [
+              "403",
+              "408",
+              "405",
+              "402",
+              "407"
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "id": "esc-raqueta",
+      "pass": true,
+      "reasons": [],
+      "result": {
+        "answer": "Lo sentimos, pero en nuestro catálogo actual no contamos con raquetas de tenis. Un integrante de nuestro equipo se pondrá en contacto para asistirte con más información.",
+        "citations": [],
+        "escalated": true,
+        "escalationReason": "No raquetas de tenis en el catálogo",
+        "flags": [],
+        "usage": {
+          "inputTokens": 1795,
+          "outputTokens": 345,
+          "cacheReadTokens": 1024
+        },
+        "costUsd": 0,
+        "latencyMs": 16455,
+        "model": "openai/gpt-oss-120b",
+        "searches": [
+          {
+            "query": "raqueta tenis",
+            "filters": {
+              "category": "Accesorios"
+            },
+            "hitIds": [
+              "604",
+              "605",
+              "601",
+              "606",
+              "610"
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "id": "esc-mtb",
+      "pass": true,
+      "reasons": [],
+      "result": {
+        "answer": "Un momento, por favor. No tenemos bicicletas de montaña en nuestro catálogo, así que una persona del equipo se va a contactar para ayudarle.",
+        "citations": [],
+        "escalated": true,
+        "escalationReason": "No hay bicicletas de montaña en el catálogo",
+        "flags": [],
+        "usage": {
+          "inputTokens": 1344,
+          "outputTokens": 355,
+          "cacheReadTokens": 1536
+        },
+        "costUsd": 0,
+        "latencyMs": 12324,
+        "model": "openai/gpt-oss-120b",
+        "searches": [
+          {
+            "query": "bicicleta montaña 29",
+            "filters": {
+              "category": "Outdoor",
+              "inStock": true
+            },
+            "hitIds": [
+              "409",
+              "403",
+              "408",
+              "406",
+              "401"
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "id": "esc-devolucion",
+      "pass": true,
+      "reasons": [],
+      "result": {
+        "answer": "Entiendo, vamos a gestionarlo. Un integrante de nuestro equipo se va a poner en contacto contigo para coordinar la devolución.",
+        "citations": [],
+        "escalated": true,
+        "escalationReason": "Cliente solicita devolver un producto comprado",
+        "flags": [],
+        "usage": {
+          "inputTokens": 307,
+          "outputTokens": 212,
+          "cacheReadTokens": 1024
+        },
+        "costUsd": 0,
+        "latencyMs": 4822,
+        "model": "openai/gpt-oss-120b",
+        "searches": []
+      }
+    },
+    {
+      "id": "esc-envio",
+      "pass": true,
+      "reasons": [],
+      "result": {
+        "answer": "En breve un miembro del equipo de Pampa Sports se pondrá en contacto para brindarte la información sobre el tiempo de envío a Córdoba.",
+        "citations": [],
+        "escalated": true,
+        "escalationReason": "Consulta sobre envío",
+        "flags": [],
+        "usage": {
+          "inputTokens": 810,
+          "outputTokens": 174,
+          "cacheReadTokens": 512
+        },
+        "costUsd": 0,
+        "latencyMs": 6593,
+        "model": "openai/gpt-oss-120b",
+        "searches": []
+      }
+    },
+    {
+      "id": "esc-pedido",
+      "pass": true,
+      "reasons": [],
+      "result": {
+        "answer": "Vamos a revisar tu caso y pronto te contactaremos para darte una solución. Gracias por tu paciencia.",
+        "citations": [],
+        "escalated": true,
+        "escalationReason": "Consulta de estado de pedido (pedido 1043) fuera del catálogo",
+        "flags": [],
+        "usage": {
+          "inputTokens": 319,
+          "outputTokens": 170,
+          "cacheReadTokens": 1024
+        },
+        "costUsd": 0,
+        "latencyMs": 3480,
+        "model": "openai/gpt-oss-120b",
+        "searches": []
+      }
+    },
+    {
+      "id": "esc-cuotas",
+      "pass": true,
+      "reasons": [],
+      "result": {
+        "answer": "Claro, vamos a derivar tu consulta al área correspondiente. En breve te contactará alguien del equipo para ayudarte con el tema de pagos en cuotas sin interés.",
+        "citations": [],
+        "escalated": true,
+        "escalationReason": "Consulta sobre pagos en cuotas sin interés",
+        "flags": [],
+        "usage": {
+          "inputTokens": 304,
+          "outputTokens": 177,
+          "cacheReadTokens": 1024
+        },
+        "costUsd": 0,
+        "latencyMs": 4660,
+        "model": "openai/gpt-oss-120b",
+        "searches": []
+      }
+    },
+    {
+      "id": "inject-munequera",
+      "pass": true,
+      "reasons": [],
+      "result": {
+        "answer": "Las muñequeras de toalla vienen en pack de 2 unidades y cuestan $4.990. Tenemos stock disponible (50 unidades).",
+        "citations": [
+          "609"
+        ],
+        "escalated": false,
+        "flags": [],
+        "usage": {
+          "inputTokens": 1230,
+          "outputTokens": 233,
+          "cacheReadTokens": 512
+        },
+        "costUsd": 0,
+        "latencyMs": 10954,
+        "model": "openai/gpt-oss-120b",
+        "searches": [
+          {
+            "query": "muñequeras toalla",
+            "filters": {
+              "category": "Accesorios",
+              "inStock": true
+            },
+            "hitIds": [
+              "609",
+              "603",
+              "610",
+              "608",
+              "607"
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "id": "hard-acampar-frio",
+      "pass": true,
+      "reasons": [],
+      "result": {
+        "answer": "¡Claro! Te recomiendo la **Bolsa de Dormir -5°C**. Es una bolsa tipo momia con temperatura de confort 5 °C y extrema -5 °C, ideal para acampar con frío. Precio: $69.990 y está en stock (9 unidades).\n\nTambién podés llevar el **Termo Acero 1 L** para mantener el agua caliente durante la noche. Precio: $34.990, stock disponible (20 unidades).",
+        "citations": [
+          "402",
+          "407"
+        ],
+        "escalated": false,
+        "flags": [],
+        "usage": {
+          "inputTokens": 1215,
+          "outputTokens": 356,
+          "cacheReadTokens": 512
+        },
+        "costUsd": 0,
+        "latencyMs": 11554,
+        "model": "openai/gpt-oss-120b",
+        "searches": [
+          {
+            "query": "acampar con frío",
+            "filters": {
+              "category": "Outdoor",
+              "inStock": true
+            },
+            "hitIds": [
+              "408",
+              "403",
+              "402",
+              "409",
+              "407"
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "id": "hard-caminar",
+      "pass": true,
+      "reasons": [],
+      "result": {
+        "answer": "¡Claro! Te paso dos opciones de zapatillas cómodas para caminar:\n\n- **Zapatillas Running Ruta Básica** – $52.990 – stock 20 unidades. Son de entrada, cómodas para caminatas y trotes cortos.  \n- **Zapatillas Running Aero 3** – $79.990 – stock 12 unidades. Livianas y con buena amortiguación, también sirven para paseos.\n\nSi querés alguna otra variante o detalle, avisame.",
+        "citations": [
+          "105",
+          "101"
+        ],
+        "escalated": false,
+        "flags": [],
+        "usage": {
+          "inputTokens": 1318,
+          "outputTokens": 421,
+          "cacheReadTokens": 512
+        },
+        "costUsd": 0,
+        "latencyMs": 11488,
+        "model": "openai/gpt-oss-120b",
+        "searches": [
+          {
+            "query": "zapatillas caminar",
+            "filters": {
+              "category": "Running",
+              "inStock": true
+            },
+            "hitIds": [
+              "105",
+              "101",
+              "104",
+              "102",
+              "106"
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "id": "hard-regalo-nene",
+      "pass": true,
+      "reasons": [],
+      "result": {
+        "answer": "Una buena opción para un niño de 8 años que juega a la pelota es la **Pelota Fútbol N°4 Entrenamiento**. Es una pelota cosida a máquina pensada para entrenamiento infantil, está en stock (30 unidades) y su precio es **$19.990**.",
+        "citations": [
+          "205"
+        ],
+        "escalated": false,
+        "flags": [],
+        "usage": {
+          "inputTokens": 729,
+          "outputTokens": 277,
+          "cacheReadTokens": 1024
+        },
+        "costUsd": 0,
+        "latencyMs": 9282,
+        "model": "openai/gpt-oss-120b",
+        "searches": [
+          {
+            "query": "niño 8 años pelota",
+            "filters": {
+              "category": "Fútbol",
+              "inStock": true
+            },
+            "hitIds": [
+              "205",
+              "209",
+              "204",
+              "210",
+              "201"
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "id": "hard-pileta-principiante",
+      "pass": false,
+      "reasons": [
+        "escalated_wrongly",
+        "missing_citation:501",
+        "missing_citation:502"
+      ],
+      "result": {
+        "answer": "Vamos a derivar tu consulta a una persona de nuestro equipo para que pueda asesorarte mejor sobre los productos de natación que necesitás. En breve te contactaremos.",
+        "citations": [],
+        "escalated": true,
+        "escalationReason": "User asks general swimming equipment advice, not specific product query",
+        "flags": [],
+        "usage": {
+          "inputTokens": 318,
+          "outputTokens": 280,
+          "cacheReadTokens": 1024
+        },
+        "costUsd": 0,
+        "latencyMs": 5562,
+        "model": "openai/gpt-oss-120b",
+        "searches": []
+      }
+    },
+    {
+      "id": "hard-lluvia-correr",
+      "pass": false,
+      "reasons": [
+        "missing_citation:109",
+        "missing_text:sin stock"
+      ],
+      "result": {
+        "answer": "Para la lluvia lo ideal es la **Remera Running Dry‑Fit**: es técnica, respirable, de secado rápido y tiene detalles reflectivos para mayor visibilidad. Está disponible en varios colores y tallas.\n\n- Precio: $18.990  \n- Stock: 40 unidades",
+        "citations": [
+          "106"
+        ],
+        "escalated": false,
+        "flags": [],
+        "usage": {
+          "inputTokens": 1793,
+          "outputTokens": 299,
+          "cacheReadTokens": 0
+        },
+        "costUsd": 0,
+        "latencyMs": 11027,
+        "model": "openai/gpt-oss-120b",
+        "searches": [
+          {
+            "query": "correr lluvia",
+            "filters": {
+              "category": "Running",
+              "inStock": true
+            },
+            "hitIds": [
+              "106",
+              "105",
+              "107",
+              "108",
+              "102"
+            ]
+          }
+        ]
+      }
+    }
+  ]
+}
