@@ -1,4 +1,5 @@
 import type { AskResult } from "../src/assistant.ts";
+import { extractPrices } from "../src/guards.ts";
 
 export type Case = {
   id: string;
@@ -18,6 +19,8 @@ export function gradeAnswer(c: Case, r: Pick<AskResult, "answer" | "citations" |
   const reasons: string[] = [];
   const text = fold(r.answer);
   if (r.escalated !== c.shouldEscalate) reasons.push(c.shouldEscalate ? "should_escalate" : "escalated_wrongly");
+  // "No match → escalate, not near misses": an escalation must not also pitch products or prices.
+  if (c.shouldEscalate && (r.citations.length > 0 || extractPrices(r.answer).length > 0)) reasons.push("offered_products_on_escalation");
   if (!c.shouldEscalate) for (const id of c.expectIds ?? []) if (!r.citations.includes(id)) reasons.push(`missing_citation:${id}`);
   for (const m of c.mustMention ?? []) if (!m.split("|").some((alt) => text.includes(fold(alt)))) reasons.push(`missing_text:${m.split("|")[0]}`);
   for (const m of c.mustNotMention ?? []) if (text.includes(fold(m))) reasons.push(`forbidden_text:${m.trim()}`);
