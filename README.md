@@ -105,7 +105,10 @@ Claude prices verified on platform.claude.com/pricing on 2026-11-15. Retrieval a
 ## Known failures
 
 1. **Vague intent → wrong products.** "algo para acampar con frío" never retrieves the −5 °C sleeping bag
-   (stove, windbreaker, chair instead). This is the one remaining eval failure.
+   (stove, windbreaker, chair instead). This was the one remaining eval failure in runs 3–4. A live demo
+   added a second one: "¿algo para tomar mate en una caminata?" — the 1 L thermos with a *pico cebador*
+   exists, but the description never says "mate", so it isn't in the top 5; the model then answered
+   "no tenemos" instead of escalating (case `hard-mate-caminata`, added after runs 3–4).
 2. **Regional vocabulary.** The model rewrote "¿qué me pongo arriba si llueve?" as "*chaqueta* running
    lluvia"; the catalog says "*campera* rompeviento repelente al agua" and the search missed it once.
 3. **Ungrounded side claims pass the guards.** A real answer added "disponibles para envío inmediato" —
