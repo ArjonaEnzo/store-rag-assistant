@@ -139,13 +139,16 @@ export async function ask(question: string, { provider, index }: AskDeps): Promi
     finalText = ESCALATION_TEXT;
   }
 
-  const { answer, citedIds } = parseCitations(finalText);
+  const { answer, citedIds, explicitNone } = parseCitations(finalText);
+  const escalated = escalationReason !== undefined;
+  const flags = checkAnswer({ text: answer, citedIds }, allHits, allowedPrices);
+  if (!escalated && searches.length > 0 && citedIds.length === 0 && !explicitNone) flags.push("missing_citations");
   return {
     answer,
     citations: citedIds,
-    escalated: escalationReason !== undefined,
+    escalated,
     ...(escalationReason !== undefined ? { escalationReason } : {}),
-    flags: checkAnswer({ text: answer, citedIds }, allHits, allowedPrices),
+    flags,
     usage,
     costUsd: costUsd(provider.model, usage),
     latencyMs: Math.round(performance.now() - t0),

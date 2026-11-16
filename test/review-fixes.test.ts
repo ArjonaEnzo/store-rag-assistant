@@ -1,6 +1,23 @@
 import { describe, expect, it } from "vitest";
-import { parseCitations } from "../src/assistant.ts";
+import { ask, parseCitations } from "../src/assistant.ts";
 import { extractPrices } from "../src/guards.ts";
+import type { ChatResponse, LlmProvider } from "../src/llm/provider.ts";
+import type { ProductIndex, SearchHit } from "../src/retrieval/index.ts";
+
+const product = (id: string, price: number, extra: Partial<SearchHit["product"]> = {}) => ({
+  id, name: `Producto ${id}`, price, regularPrice: price, onSale: false, inStock: true, stockQty: 3,
+  categories: ["Running"], attributes: {}, description: "x", url: "", ...extra,
+});
+const index = (hits: SearchHit[]) => ({ categories: ["Running"], search: async () => hits }) as unknown as ProductIndex;
+const scripted = (rs: Omit<ChatResponse, "raw">[]): LlmProvider => ({
+  model: "claude-haiku-5-5",
+  chat: async () => ({ ...rs.shift()!, raw: undefined }),
+});
+const u = { inputTokens: 1, outputTokens: 1, cacheReadTokens: 0 };
+const searchCall = (input: object): Omit<ChatResponse, "raw"> => ({
+  stopReason: "tool_use", usage: u, content: [{ type: "tool_use", id: "t1", name: "search_products", input }],
+});
+const final = (text: string): Omit<ChatResponse, "raw"> => ({ stopReason: "end_turn", usage: u, content: [{ type: "text", text }] });
 
 describe("parseCitations (review #1)", () => {
   it.each([
@@ -17,6 +34,18 @@ describe("parseCitations (review #1)", () => {
   it("distinguishes explicit none from a missing line", () => {
     expect(parseCitations("Hola.\nCITED: none").explicitNone).toBe(true);
     expect(parseCitations("Hola.").explicitNone).toBe(false);
+  });
+});
+
+describe("missing citations (review #2)", () => {
+  it("flags an answer that searched but cited nothing", async () => {
+    const r = await ask("zapas", { provider: scripted([searchCall({ query: "zapas" }), final("Tenés la Producto 1.")]), index: index([{ product: product("1", 50000), score: 0.9 }]) });
+    expect(r.flags).toContain("missing_citations");
+  });
+
+  it("does not flag an explicit CITED: none", async () => {
+    const r = await ask("zapas", { provider: scripted([searchCall({ query: "zapas" }), final("No encontré nada.\nCITED: none")]), index: index([]) });
+    expect(r.flags).toEqual([]);
   });
 });
 
