@@ -97,8 +97,9 @@ export async function ask(question: string, { provider, index }: AskDeps): Promi
     usage = addUsage(usage, res.usage);
     messages.push({ role: "assistant", content: res.content, raw: res.raw });
 
-    if (res.stopReason === "refusal") {
-      escalationReason ??= "model_refusal";
+    if (res.stopReason === "refusal" || res.stopReason === "max_tokens") {
+      // A truncated turn may carry a half-written tool call or an answer without its CITED line: never act on it.
+      escalationReason ??= res.stopReason === "refusal" ? "model_refusal" : "truncated";
       finalText = ESCALATION_TEXT;
       break;
     }

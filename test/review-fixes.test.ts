@@ -58,3 +58,13 @@ describe("extractPrices formats (review #3)", () => {
     expect(extractPrices("$79.990,00")).toEqual([79990]);
   });
 });
+
+describe("truncation (review #6)", () => {
+  it("escalates instead of executing a truncated turn", async () => {
+    let searched = false;
+    const idx = { categories: [], search: async () => ((searched = true), []) } as unknown as ProductIndex;
+    const r = await ask("x", { provider: scripted([{ ...searchCall({ query: "a" }), stopReason: "max_tokens" }]), index: idx });
+    expect(searched).toBe(false);
+    expect(r.escalationReason).toBe("truncated");
+  });
+});
