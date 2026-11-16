@@ -47,14 +47,14 @@ describe("ask", () => {
 
     const r = await ask("¿zapatillas para correr por menos de $80.000?", { provider, index });
 
-    expect(calls).toEqual([{ query: "zapatillas running", filters: { maxPrice: 80000, inStock: true } }]);
+    expect(calls).toEqual([{ query: "zapatillas running", filters: { maxPrice: 80000 } }]);
     expect(r.answer).toBe("Tenés la Zapatilla 101 a $79.990.");
     expect(r.citations).toEqual(["101"]);
     expect(r.escalated).toBe(false);
     expect(r.flags).toEqual([]);
     expect(r.usage).toEqual({ inputTokens: 3000, outputTokens: 300, cacheReadTokens: 0 });
     expect(r.costUsd).toBeCloseTo(0.00045, 8);
-    expect(r.searches).toEqual([{ query: "zapatillas running", filters: { maxPrice: 80000, inStock: true }, hitIds: ["101"] }]);
+    expect(r.searches).toEqual([{ query: "zapatillas running", filters: { maxPrice: 80000 }, hitIds: ["101"] }]);
     // Tool result is wrapped as data
     const toolMsg = requests[1]!.messages[2]!;
     expect(JSON.stringify(toolMsg)).toContain("<catalog_data>");

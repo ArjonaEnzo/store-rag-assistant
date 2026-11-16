@@ -6,6 +6,13 @@ describe("search_products tool schema", () => {
   // filter excluded the right product in 7/35 cases. Category is semantics — the embedding already handles it.
   it("does not expose a category filter to the model", () => {
     const search = tools(["Running", "Outdoor"]).find((t) => t.name === "search_products")!;
-    expect(Object.keys((search.inputSchema as { properties: object }).properties)).toEqual(["query", "max_price", "min_price", "in_stock"]);
+    expect(Object.keys((search.inputSchema as { properties: object }).properties)).toEqual(["query", "max_price", "min_price"]);
+  });
+
+  // Same run: the model set in_stock:true unasked, hiding out-of-stock products the customer asked about (3/35).
+  // Stock is returned on every hit, so the model can say "sin stock" without filtering.
+  it("does not expose an in_stock filter either", () => {
+    const search = tools([]).find((t) => t.name === "search_products")!;
+    expect((search.inputSchema as { properties: object }).properties).not.toHaveProperty("in_stock");
   });
 });
