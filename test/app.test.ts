@@ -10,6 +10,15 @@ const provider: LlmProvider = {
 };
 
 describe("HTTP app", () => {
+  it("GET / serves the chat page", async () => {
+    const res = await createApp({ provider, index }).request("/");
+    expect(res.status).toBe(200);
+    expect(res.headers.get("content-type")).toContain("text/html");
+    const html = await res.text();
+    expect(html).toContain("Pampa Sports");
+    expect(html).toContain('id="ask-form"');
+  });
+
   it("GET /health reports products and model", async () => {
     const res = await createApp({ provider, index }).request("/health");
     expect(await res.json()).toEqual({ ok: true, products: 2, llm: "fake" });

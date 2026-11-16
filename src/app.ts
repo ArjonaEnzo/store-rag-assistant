@@ -1,3 +1,4 @@
+import { readFileSync } from "node:fs";
 import { Hono } from "hono";
 import { ask } from "./assistant.ts";
 import type { LlmProvider } from "./llm/provider.ts";
@@ -8,6 +9,9 @@ export type AppDeps = ({ provider: LlmProvider } | { error: string }) & { index:
 /** HTTP routes, separated from the server bootstrap so they can be tested with app.request(). */
 export function createApp(deps: AppDeps): Hono {
   const app = new Hono();
+  const page = readFileSync(new URL("../public/index.html", import.meta.url), "utf8");
+
+  app.get("/", (c) => c.html(page));
 
   app.get("/health", (c) => c.json({ ok: true, products: deps.index.size, llm: "provider" in deps ? deps.provider.model : deps.error }));
 

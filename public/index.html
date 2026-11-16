@@ -1,0 +1,188 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Pampa Sports · asistente</title>
+<style>
+  :root {
+    --bg: #f4f2ee; --surface: #ffffff; --ink: #1d1b18; --muted: #6b665e; --line: #e3dfd7;
+    --accent: #1f6f4a; --accent-ink: #ffffff; --user: #1d1b18; --user-ink: #f4f2ee;
+    --warn-bg: #fff4dc; --warn-ink: #7a5300; --esc-bg: #e8eefc; --esc-ink: #23408e;
+    --ok: #1f6f4a; --oos: #a23a2a;
+    --radius: 14px;
+    font-family: ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+  }
+  @media (prefers-color-scheme: dark) {
+    :root {
+      --bg: #141311; --surface: #1d1c19; --ink: #ece8e1; --muted: #a39d93; --line: #2e2c28;
+      --accent: #4fb985; --accent-ink: #0d1f16; --user: #ece8e1; --user-ink: #141311;
+      --warn-bg: #3a2f14; --warn-ink: #f0c66a; --esc-bg: #1c2742; --esc-ink: #a9c0ff;
+      --ok: #6fd3a0; --oos: #f08a76;
+    }
+  }
+  * { box-sizing: border-box; }
+  body { margin: 0; background: var(--bg); color: var(--ink); min-height: 100dvh; display: flex; flex-direction: column; }
+  header { padding: 18px 16px 12px; border-bottom: 1px solid var(--line); background: var(--surface); }
+  .wrap { width: 100%; max-width: 760px; margin: 0 auto; }
+  h1 { margin: 0; font-size: 1.15rem; letter-spacing: -0.01em; }
+  h1 span { color: var(--accent); }
+  .sub { margin: 4px 0 0; color: var(--muted); font-size: 0.85rem; }
+  main { flex: 1; padding: 16px; }
+  #log { display: flex; flex-direction: column; gap: 14px; }
+  .msg { max-width: 92%; padding: 12px 14px; border-radius: var(--radius); line-height: 1.5; font-size: 0.96rem; }
+  .msg.user { align-self: flex-end; background: var(--user); color: var(--user-ink); border-bottom-right-radius: 4px; }
+  .msg.bot { align-self: flex-start; background: var(--surface); border: 1px solid var(--line); border-bottom-left-radius: 4px; }
+  .msg.bot p { margin: 0 0 6px; } .msg.bot p:last-child { margin: 0; }
+  .msg.bot ul { margin: 4px 0 6px; padding-left: 18px; }
+  .cards { display: grid; grid-template-columns: repeat(auto-fill, minmax(190px, 1fr)); gap: 8px; margin-top: 10px; }
+  .card { border: 1px solid var(--line); border-radius: 10px; padding: 9px 10px; font-size: 0.85rem; }
+  .card .name { font-weight: 600; margin-bottom: 4px; }
+  .card .price { font-variant-numeric: tabular-nums; }
+  .card s { color: var(--muted); margin-left: 6px; font-size: 0.8rem; }
+  .card .stock { font-size: 0.78rem; margin-top: 3px; }
+  .stock.in { color: var(--ok); } .stock.out { color: var(--oos); }
+  .card .id { color: var(--muted); font-size: 0.72rem; float: right; }
+  .badge { display: inline-block; margin-top: 10px; padding: 5px 9px; border-radius: 8px; font-size: 0.8rem; }
+  .badge.esc { background: var(--esc-bg); color: var(--esc-ink); }
+  .badge.warn { background: var(--warn-bg); color: var(--warn-ink); }
+  .meta { margin-top: 10px; color: var(--muted); font-size: 0.75rem; font-variant-numeric: tabular-nums; }
+  details { margin-top: 6px; color: var(--muted); font-size: 0.75rem; }
+  details code { font-size: 0.72rem; word-break: break-word; }
+  .thinking { color: var(--muted); font-style: italic; }
+  .chips { display: flex; flex-wrap: wrap; gap: 8px; margin: 4px 0 14px; }
+  .chip { border: 1px solid var(--line); background: var(--surface); color: var(--ink); border-radius: 999px; padding: 7px 12px; font-size: 0.85rem; cursor: pointer; }
+  .chip:hover { border-color: var(--accent); }
+  footer { position: sticky; bottom: 0; background: var(--bg); border-top: 1px solid var(--line); padding: 12px 16px calc(12px + env(safe-area-inset-bottom)); }
+  form { display: flex; gap: 8px; }
+  input { flex: 1; min-width: 0; padding: 12px 14px; border-radius: 12px; border: 1px solid var(--line); background: var(--surface); color: var(--ink); font: inherit; }
+  input:focus { outline: 2px solid var(--accent); outline-offset: 1px; }
+  button[type="submit"] { padding: 0 18px; border: 0; border-radius: 12px; background: var(--accent); color: var(--accent-ink); font: inherit; font-weight: 600; cursor: pointer; }
+  button:disabled { opacity: 0.55; cursor: wait; }
+  .note { color: var(--muted); font-size: 0.75rem; margin: 8px 0 0; }
+</style>
+</head>
+<body>
+<header>
+  <div class="wrap">
+    <h1>Pampa Sports · <span>asistente</span></h1>
+    <p class="sub" id="status">Demo de portfolio · catálogo inventado · conectando…</p>
+  </div>
+</header>
+
+<main>
+  <div class="wrap">
+    <div class="chips" id="chips"></div>
+    <div id="log" aria-live="polite"></div>
+  </div>
+</main>
+
+<footer>
+  <div class="wrap">
+    <form id="ask-form" autocomplete="off">
+      <input id="q" name="q" maxlength="500" placeholder="Preguntá por productos, precios o stock…" required />
+      <button type="submit" id="send">Enviar</button>
+    </form>
+    <p class="note">Responde solo con el catálogo, cita los productos y deriva a una persona cuando no sabe. En el free tier puede tardar 5–20 s.</p>
+  </div>
+</footer>
+
+<script>
+  const HAIKU = { input: 0.1, output: 0.5 }; // USD per MTok, for the "if it ran on Claude" estimate
+  const EXAMPLES = [
+    "¿Tienen zapatillas para correr por menos de $80.000?",
+    "Busco botines para fútbol 5, ¿cuánto salen?",
+    "¿Hay mochila de 65 litros?",
+    "¿Cuánto tarda el envío a Córdoba?",
+  ];
+  const $ = (id) => document.getElementById(id);
+  const log = $("log"), form = $("ask-form"), input = $("q"), send = $("send");
+  const ars = new Intl.NumberFormat("es-AR", { style: "currency", currency: "ARS", maximumFractionDigits: 0 });
+  const num = new Intl.NumberFormat("es-AR");
+
+  const esc = (s) => s.replace(/[&<>"']/g, (c) => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;" })[c]);
+
+  /** Minimal, safe markdown: escape first, then **bold** and "- " lists. */
+  function render(text) {
+    const lines = esc(text).replace(/\*\*(.+?)\*\*/g, "<strong>$1</strong>").split("\n");
+    let html = "", list = false;
+    for (const line of lines) {
+      const item = line.match(/^\s*[-•]\s+(.*)$/);
+      if (item) { if (!list) { html += "<ul>"; list = true; } html += `<li>${item[1]}</li>`; continue; }
+      if (list) { html += "</ul>"; list = false; }
+      if (line.trim()) html += `<p>${line}</p>`;
+    }
+    return html + (list ? "</ul>" : "");
+  }
+
+  function add(cls, html) {
+    const el = document.createElement("div");
+    el.className = `msg ${cls}`;
+    el.innerHTML = html;
+    log.appendChild(el);
+    el.scrollIntoView({ behavior: "smooth", block: "end" });
+    return el;
+  }
+
+  function botHtml(r) {
+    let h = render(r.answer);
+    if (r.products?.length) {
+      h += `<div class="cards">${r.products.map((p) => `
+        <div class="card"><span class="id">#${esc(p.id)}</span>
+          <div class="name">${esc(p.name)}</div>
+          <div class="price">${ars.format(p.price)}${p.onSale ? `<s>${ars.format(p.regularPrice)}</s>` : ""}</div>
+          <div class="stock ${p.inStock ? "in" : "out"}">${p.inStock ? "En stock" : "Sin stock"}</div>
+        </div>`).join("")}</div>`;
+    }
+    if (r.escalated) h += `<div class="badge esc">Derivado a una persona${r.escalationReason ? ` · ${esc(r.escalationReason)}` : ""}</div>`;
+    if (r.flags?.length) h += `<div class="badge warn">Salvaguarda: ${r.flags.map(esc).join(", ")}</div>`;
+    const u = r.usage || { inputTokens: 0, outputTokens: 0 };
+    const haiku = (u.inputTokens * HAIKU.input + u.outputTokens * HAIKU.output) / 1e6;
+    h += `<div class="meta">${esc(r.model)} · ${num.format(u.inputTokens)} tokens in / ${num.format(u.outputTokens)} out · USD ${r.costUsd.toFixed(6)}`
+      + ` (≈ USD ${haiku.toFixed(5)} con Claude Haiku) · ${(r.latencyMs / 1000).toFixed(1)} s</div>`;
+    if (r.searches?.length) {
+      h += `<details><summary>Qué buscó</summary>${r.searches.map((s) =>
+        `<div><code>"${esc(s.query)}" ${esc(JSON.stringify(s.filters))} → ${s.hitIds.map(esc).join(", ") || "sin resultados"}</code></div>`).join("")}</details>`;
+    }
+    return h;
+  }
+
+  async function askQuestion(question) {
+    add("user", esc(question));
+    const pending = add("bot thinking", "Buscando en el catálogo…");
+    send.disabled = input.disabled = true;
+    try {
+      const res = await fetch("/ask", { method: "POST", headers: { "content-type": "application/json" }, body: JSON.stringify({ question }) });
+      const data = await res.json();
+      pending.classList.remove("thinking");
+      pending.innerHTML = res.ok ? botHtml(data) : `<div class="badge warn">Error ${res.status}: ${esc(data.error || "sin detalle")}</div>`;
+    } catch (err) {
+      pending.classList.remove("thinking");
+      pending.innerHTML = `<div class="badge warn">No pude conectar con el servidor: ${esc(String(err))}</div>`;
+    } finally {
+      send.disabled = input.disabled = false;
+      input.focus();
+    }
+  }
+
+  form.addEventListener("submit", (e) => {
+    e.preventDefault();
+    const q = input.value.trim();
+    if (!q) return;
+    input.value = "";
+    askQuestion(q);
+  });
+
+  for (const ex of EXAMPLES) {
+    const b = document.createElement("button");
+    b.type = "button"; b.className = "chip"; b.textContent = ex;
+    b.addEventListener("click", () => askQuestion(ex));
+    $("chips").appendChild(b);
+  }
+
+  fetch("/health").then((r) => r.json()).then((h) => {
+    $("status").textContent = `Demo de portfolio · catálogo inventado (${h.products} productos) · modelo: ${h.llm}`;
+  }).catch(() => { $("status").textContent = "Demo de portfolio · servidor no disponible"; });
+</script>
+</body>
+</html>
