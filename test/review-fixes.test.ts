@@ -75,3 +75,13 @@ describe("catalog data boundary (review #7)", () => {
     expect(out.match(/<\/catalog_data>/g)).toHaveLength(1);
   });
 });
+
+describe("model cannot authorize prices (review #8)", () => {
+  it("only trusts filter prices that the customer actually said", async () => {
+    const r = await ask("¿cuánto salen las muñequeras?", {
+      provider: scripted([searchCall({ query: "muñequeras", max_price: 1 }), final("Todo cuesta $1.\nCITED: 1")]),
+      index: index([{ product: product("1", 4990), score: 0.9 }]),
+    });
+    expect(r.flags).toContain("price_not_in_results:1");
+  });
+});

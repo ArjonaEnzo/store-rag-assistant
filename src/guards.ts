@@ -21,6 +21,17 @@ export function extractPrices(text: string): number[] {
   return out;
 }
 
+/**
+ * Every number the customer wrote that could be a price (budget etc.), with or without a currency marker:
+ * "80.000", "80000", "$80.000", "80 lucas", "80 mil". Used as the only extra prices an answer may state.
+ */
+export function customerNumbers(question: string): number[] {
+  const out = new Set(extractPrices(question));
+  for (const m of question.matchAll(/(\d{1,3}(?:\.\d{3})+|\d{4,})/g)) out.add(toNumber(m[1]!));
+  for (const m of question.matchAll(/(\d+)\s?(?:lucas|mil|k)\b/gi)) out.add(toNumber(m[1]!, true));
+  return [...out];
+}
+
 export type AnswerUnderCheck = { text: string; citedIds: string[] };
 
 /**

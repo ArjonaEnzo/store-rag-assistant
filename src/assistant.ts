@@ -1,5 +1,5 @@
 import { addUsage, costUsd, type Usage } from "./cost.ts";
-import { checkAnswer, extractPrices } from "./guards.ts";
+import { checkAnswer, customerNumbers } from "./guards.ts";
 import type { ChatMsg, LlmProvider, ToolResult, ToolUseBlock } from "./llm/provider.ts";
 import { systemPrompt, tools } from "./prompt.ts";
 import type { ProductIndex, SearchFilters, SearchHit } from "./retrieval/index.ts";
@@ -90,7 +90,9 @@ export async function ask(question: string, { provider, index }: AskDeps): Promi
   let usage: Usage = { inputTokens: 0, outputTokens: 0, cacheReadTokens: 0 };
   const searches: AskResult["searches"] = [];
   const allHits: SearchHit[] = [];
-  const allowedPrices = extractPrices(question);
+  // Only numbers the customer wrote may appear as non-catalog prices. Filter values chosen by the model are not
+  // trusted: a manipulated model could pass max_price: 1 and then "authorize" a $1 answer.
+  const allowedPrices = customerNumbers(question);
   let escalationReason: string | undefined;
   let finalText: string | undefined;
 
@@ -124,7 +126,6 @@ export async function ask(question: string, { provider, index }: AskDeps): Promi
         const hits = await index.search(parsed.query, filters, 5);
         searches.push({ query: parsed.query, filters, hitIds: hits.map((h) => h.product.id) });
         allHits.push(...hits);
-        for (const v of [filters.maxPrice, filters.minPrice]) if (v !== undefined) allowedPrices.push(v);
         results.push({ toolUseId: call.id, content: catalogData(hits) });
       } else if (call.name === "escalate_to_human") {
         const reason = (call.input as { reason?: unknown } | null)?.reason;
