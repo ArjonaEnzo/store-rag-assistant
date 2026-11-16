@@ -72,7 +72,7 @@ Then put **one** key in a local `.env` (see `.env.example`; the first key found 
 ```bash
 pnpm ask "¿tienen zapatillas para correr por menos de $80.000?"
 pnpm eval                       # retrieval + full answers; --only id1,id2 to re-run some cases
-pnpm start                      # POST /ask {"question": "..."} · GET /health
+pnpm start                      # chat UI at http://localhost:3000 · POST /ask {"question": "..."} · GET /health
 ```
 
 Free options: **Groq** (console.groq.com, no card), **Gemini** free tier (aistudio.google.com), or
