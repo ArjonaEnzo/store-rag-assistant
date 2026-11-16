@@ -26,7 +26,8 @@ type SearchInput = { query: string; max_price?: number; min_price?: number; cate
 
 function parseSearchInput(input: unknown): SearchInput | string {
   if (!input || typeof input !== "object") return "input must be an object";
-  const i = input as Record<string, unknown>;
+  // Some models send null for optional args (gpt-oss on Groq): treat null as absent.
+  const i = Object.fromEntries(Object.entries(input).filter(([, v]) => v !== null)) as Record<string, unknown>;
   if (typeof i.query !== "string" || !i.query.trim()) return "query (string) is required";
   for (const k of ["max_price", "min_price"] as const) if (i[k] !== undefined && typeof i[k] !== "number") return `${k} must be a number`;
   if (i.category !== undefined && typeof i.category !== "string") return "category must be a string";

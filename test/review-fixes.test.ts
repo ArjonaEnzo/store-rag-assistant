@@ -75,6 +75,15 @@ describe("escalation grading (review #4)", () => {
   });
 });
 
+describe("null optional args (eval run 2)", () => {
+  it("treats null price filters as absent instead of rejecting the call", async () => {
+    const seen: unknown[] = [];
+    const idx = { categories: [], search: async (_q: string, f: unknown) => (seen.push(f), []) } as unknown as ProductIndex;
+    await ask("guantes", { provider: scripted([searchCall({ query: "guantes", max_price: null, min_price: null }), final("Nada.\nCITED: none")]), index: idx });
+    expect(seen).toEqual([{}]);
+  });
+});
+
 describe("truncation (review #6)", () => {
   it("escalates instead of executing a truncated turn", async () => {
     let searched = false;

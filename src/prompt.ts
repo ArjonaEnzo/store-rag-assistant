@@ -27,8 +27,8 @@ export function tools(categories: string[]): ToolDef[] {
         type: "object",
         properties: {
           query: { type: "string", description: "Qué busca el cliente, en palabras (ej: 'zapatillas para maratón')." },
-          max_price: { type: "integer", description: "Precio máximo en ARS, si el cliente lo dio." },
-          min_price: { type: "integer", description: "Precio mínimo en ARS, si el cliente lo dio." },
+          max_price: { type: ["integer", "null"], description: "Precio máximo en ARS, si el cliente lo dio." },
+          min_price: { type: ["integer", "null"], description: "Precio mínimo en ARS, si el cliente lo dio." },
         },
         required: ["query"],
         additionalProperties: false,
