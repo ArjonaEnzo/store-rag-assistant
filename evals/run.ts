@@ -8,6 +8,7 @@
 import { mkdir, readFile, writeFile } from "node:fs/promises";
 import { ask, type AskResult } from "../src/assistant.ts";
 import { buildIndex, buildProvider } from "../src/bootstrap.ts";
+import { costUsd } from "../src/cost.ts";
 import type { ProductIndex } from "../src/retrieval/index.ts";
 import { gradeAnswer, type Case } from "./grade.ts";
 
@@ -85,6 +86,12 @@ const escOk = ok.filter((a) => a.result.escalated === cases.find((c) => c.id ===
 const costs = ok.map((a) => a.result.costUsd);
 const lat = ok.map((a) => a.result.latencyMs);
 const totalCost = costs.reduce((s, x) => s + x, 0);
+// Same token counts priced as Claude Haiku 5.5 — an approximation (tokenizers differ), shown so free runs still
+// answer "what would this cost on a paid model?".
+const haikuEquiv = ok.reduce((s, a) => s + costUsd("claude-haiku-5-5", a.result.usage), 0);
+const avgTokens = ok.length
+  ? { in: Math.round(ok.reduce((s, a) => s + a.result.usage.inputTokens, 0) / ok.length), out: Math.round(ok.reduce((s, a) => s + a.result.usage.outputTokens, 0) / ok.length) }
+  : { in: 0, out: 0 };
 
 const summary = {
   date: new Date().toISOString(),
@@ -101,6 +108,8 @@ const summary = {
         escalationCases: escCases.length,
         totalCostUsd: totalCost,
         avgCostUsd: ok.length ? totalCost / ok.length : null,
+        avgTokensPerQuery: avgTokens,
+        haikuEquivalentAvgCostUsd: ok.length ? haikuEquiv / ok.length : null,
         p50LatencyMs: median(lat),
         flagged: ok.filter((a) => a.result.flags.length).map((a) => ({ id: a.id, flags: a.result.flags })),
       },
@@ -113,7 +122,10 @@ else {
   console.log(`answer pass rate     ${pct(passN, answers.length)} (${passN}/${answers.length})`);
   console.log(`escalation accuracy  ${pct(escOk, ok.length)}`);
   console.log(`cost                 total USD ${totalCost.toFixed(4)} · avg USD ${(ok.length ? totalCost / ok.length : 0).toFixed(6)}/query`);
+  console.log(`tokens / query       in ${avgTokens.in} · out ${avgTokens.out} (≈ USD ${(ok.length ? haikuEquiv / ok.length : 0).toFixed(6)}/query if priced as Haiku 5.5)`);
   console.log(`latency              p50 ${median(lat)} ms`);
+  const rl = "provider" in built ? (built.provider as { lastRateLimit?: Record<string, string> }).lastRateLimit : undefined;
+  if (rl && Object.keys(rl).length) console.log(`rate limits (last)   ${Object.entries(rl).map(([k, v]) => `${k.replace("x-ratelimit-", "")}=${v}`).join(" ")}`);
 }
 
 await mkdir("evals/results", { recursive: true });
@@ -133,6 +145,8 @@ const md = [
         `| escalation accuracy | ${pct(escOk, ok.length)} |`,
         `| avg cost / query | USD ${(ok.length ? totalCost / ok.length : 0).toFixed(6)} |`,
         `| total cost (run) | USD ${totalCost.toFixed(4)} |`,
+        `| avg tokens / query | in ${avgTokens.in} · out ${avgTokens.out} |`,
+        `| ≈ cost / query if priced as Haiku 5.5 | USD ${(ok.length ? haikuEquiv / ok.length : 0).toFixed(6)} |`,
         `| p50 latency | ${median(lat)} ms |`,
       ]),
   ``,
